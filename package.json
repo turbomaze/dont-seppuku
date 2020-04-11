@@ -1,0 +1,28 @@
+{
+  "name": "quarantine-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^9.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "$(npm bin)/next",
+    "build": "$(npm bin)/next build",
+    "start": "$(npm bin)/next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turbomaze/hackathon-2020-04-11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turbomaze/hackathon-2020-04-11/issues"
+  },
+  "homepage": "https://github.com/turbomaze/hackathon-2020-04-11#readme"
+}
