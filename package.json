@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "$(npm bin)/next",
     "build": "$(npm bin)/next build",
-    "start": "$(npm bin)/next start"
+    "start": "$(npm bin)/next start",
+    "deploy": "npm run build; $(npm bin)/next export"
   },
   "repository": {
     "type": "git",
