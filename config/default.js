@@ -17,6 +17,10 @@ export const upgrades = {
   [assets.masks]: {
     employees: 'masks-employees',
     sewing: 'masks-sewing-machines',
+    conveyor: 'masks-conveyor',
+    printer: 'masks-printer',
+    factory: 'masks-factory',
+    fullAutomation: 'masks-full-automation',
   },
 };
 
@@ -30,6 +34,26 @@ export const upgradeSpecs = {
     label: 'Sewing machines',
     initialCost: 250,
     productionRate: 1,
+  },
+  [upgrades[assets.masks].conveyor]: {
+    label: 'Conveyor belt',
+    initialCost: 1800,
+    productionRate: 10,
+  },
+  [upgrades[assets.masks].printer]: {
+    label: '3D printers',
+    initialCost: 9001,
+    productionRate: 109,
+  },
+  [upgrades[assets.masks].factory]: {
+    label: 'Factory',
+    initialCost: 220000,
+    productionRate: 1200,
+  },
+  [upgrades[assets.masks].fullAutomation]: {
+    label: 'Full automation',
+    initialCost: 12500000,
+    productionRate: 49999,
   },
 };
 

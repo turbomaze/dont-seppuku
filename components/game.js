@@ -27,6 +27,26 @@ export function Game () {
       cash,
       setCash
     ),
+    [upgrades[assets.masks].conveyor]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].conveyor].initialCost,
+      cash,
+      setCash
+    ),
+    [upgrades[assets.masks].printer]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].printer].initialCost,
+      cash,
+      setCash
+    ),
+    [upgrades[assets.masks].factory]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].factory].initialCost,
+      cash,
+      setCash
+    ),
+    [upgrades[assets.masks].fullAutomation]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].fullAutomation].initialCost,
+      cash,
+      setCash
+    ),
   };
 
   // computed
@@ -74,7 +94,11 @@ export function Game () {
             {
               [
                 upgrades[assets.masks].employees,
-                upgrades[assets.masks].sewing
+                upgrades[assets.masks].sewing,
+                upgrades[assets.masks].conveyor,
+                upgrades[assets.masks].printer,
+                upgrades[assets.masks].factory,
+                upgrades[assets.masks].fullAutomation,
               ].map(makeBuyable(buyables))
             }
           </div>
@@ -237,7 +261,7 @@ function Orderbook() {
 }
 
 function AssetWithRate({ label, amount, rate, suffix }) {
-  const perSecondRate = rate / (1000 / tickLengthMs);
+  const perSecondRate = rate * (1000 / tickLengthMs);
   return (
     <Horizontal wide spaced padding='8px 16px'>
       <div>{label}</div>
@@ -254,7 +278,7 @@ function AssetWithRate({ label, amount, rate, suffix }) {
 function ItemWithAmount({ onClick, label, amount, price }) {
   return (
     <div onClick={onClick}>
-      <Horizontal wide spaced padding='16px' middle>
+      <Horizontal wide spaced padding='8px 16px' middle>
         <Vertical>
           <div>{label}</div>
           <div style={{ fontSize: '16px', lineHeight: '32px' }}>Cost: {formatMoney(price)}</div>
@@ -286,5 +310,6 @@ function format(x) {
 }
 
 function formatMoney(x) {
-  return `$${x.toFixed(2).toLocaleString()}`;
+  const options = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+  return `$${x.toLocaleString(undefined, options)}`;
 }
