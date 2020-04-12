@@ -10,85 +10,692 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Game", function() { return Game; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
+/* harmony import */ var _config_default__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/default */ "./config/default.js");
+
 var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/game.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
+
+
+var assets = _config_default__WEBPACK_IMPORTED_MODULE_3__["assets"],
+    getCost = _config_default__WEBPACK_IMPORTED_MODULE_3__["getCost"],
+    initialCosts = _config_default__WEBPACK_IMPORTED_MODULE_3__["initialCosts"],
+    initialPrices = _config_default__WEBPACK_IMPORTED_MODULE_3__["initialPrices"],
+    productionRates = _config_default__WEBPACK_IMPORTED_MODULE_3__["productionRates"],
+    tickLengthMs = _config_default__WEBPACK_IMPORTED_MODULE_3__["tickLengthMs"],
+    upgrades = _config_default__WEBPACK_IMPORTED_MODULE_3__["upgrades"];
 function Game() {
-  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_1__["Horizontal"], {
+  // state
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(_config_default__WEBPACK_IMPORTED_MODULE_3__["initialCash"]),
+      cash = _useState[0],
+      setCash = _useState[1];
+
+  var _useBuyable = useBuyable(initialCosts[upgrades[assets.masks].employees], cash, setCash),
+      _useBuyable2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useBuyable, 2),
+      employees = _useBuyable2[0],
+      buyEmployee = _useBuyable2[1];
+
+  var _useBidAsk = useBidAsk(initialPrices[assets.masks]),
+      _useBidAsk2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useBidAsk, 2),
+      maskPrice = _useBidAsk2[0],
+      setMaskBidAsk = _useBidAsk2[1];
+
+  var _useTradable = useTradable(0, maskPrice, cash, setCash),
+      _useTradable2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useTradable, 4),
+      masks = _useTradable2[0],
+      setMasks = _useTradable2[1],
+      buyMasks = _useTradable2[2],
+      sellMasks = _useTradable2[3]; // computed values
+
+
+  var employeeCost = getCost(initialCosts[upgrades[assets.masks].employees], employees);
+  var maskRate = productionRates[upgrades[assets.masks].employees] * employees;
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var interval = setInterval(function () {
+      // compute new asset amounts
+      setMasks(masks + maskRate); // randomly modify the prices
+
+      if (Math.random() < 0.5) {
+        var halfSpread = 0.01;
+        var midPrice = (maskPrice.bid + maskPrice.ask) / 2;
+        var multiplier = 1 - halfSpread + 2 * halfSpread * Math.random(); // martingale
+
+        var newMidPrice = multiplier * midPrice;
+        setMaskBidAsk({
+          bid: newMidPrice * (1 - halfSpread),
+          ask: newMidPrice * (1 + halfSpread)
+        });
+      }
+    }, tickLengthMs);
+    return function () {
+      return clearInterval(interval);
+    };
+  });
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 51,
       columnNumber: 5
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_1__["Vertical"], {
+  }, __jsx(Wallet, {
+    cash: cash,
+    masks: masks,
+    maskRate: maskRate,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 7
+    }
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+    flex: 5,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 7
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
     flex: 1,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 7
+      lineNumber: 55,
+      columnNumber: 9
+    }
+  }, __jsx(Trading, {
+    bid: maskPrice.bid,
+    ask: maskPrice.ask,
+    buy: buyMasks,
+    sell: sellMasks,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 11
+    }
+  }), __jsx(Orderbook, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 11
+    }
+  })), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+    flex: 2,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 9
     }
   }, __jsx("div", {
     style: {
-      background: '#444444',
+      background: '#dcdbda',
       flex: 1
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 9
+      lineNumber: 62,
+      columnNumber: 11
     }
-  }), __jsx("div", {
+  }, __jsx("div", {
     style: {
-      background: '#666666',
+      padding: '16px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 13
+    }
+  }, __jsx("b", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 46
+    }
+  }, "Mask production")), __jsx(ItemWithAmount, {
+    onClick: guard(buyEmployee),
+    label: "Employees",
+    amount: employees,
+    price: employeeCost,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 13
+    }
+  })), __jsx("div", {
+    style: {
+      background: '#cccbca',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 11
+    }
+  }, __jsx("div", {
+    style: {
+      padding: '16px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 13
+    }
+  }, __jsx("b", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 46
+    }
+  }, "TODO production"))), __jsx("div", {
+    style: {
+      background: '#bcbbba',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 11
+    }
+  }, __jsx("div", {
+    style: {
+      padding: '16px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 13
+    }
+  }, __jsx("b", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 46
+    }
+  }, "TODO production"))))));
+}
+
+function useBuyable(initialCost, cash, setCash) {
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
+      quantity = _useState2[0],
+      setQuantity = _useState2[1];
+
+  function buy() {
+    var cost = getCost(initialCost, quantity);
+
+    if (cost > cash) {
+      throw new Error('Insufficient cash balance');
+    }
+
+    setCash(cash - cost);
+    setQuantity(quantity + 1);
+  }
+
+  return [quantity, buy];
+}
+
+function useBidAsk(_ref) {
+  var initialBid = _ref.bid,
+      initialAsk = _ref.ask;
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialBid),
+      bid = _useState3[0],
+      setBid = _useState3[1];
+
+  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialAsk),
+      ask = _useState4[0],
+      setAsk = _useState4[1];
+
+  function setBidAsk(_ref2) {
+    var newBid = _ref2.bid,
+        newAsk = _ref2.ask;
+    setBid(newBid);
+    setAsk(newAsk);
+  }
+
+  return [{
+    bid: bid,
+    ask: ask
+  }, setBidAsk];
+}
+
+function useTradable(initialAmount, _ref3, cash, setCash) {
+  var bid = _ref3.bid,
+      ask = _ref3.ask;
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialAmount),
+      amount = _useState5[0],
+      setAmount = _useState5[1];
+
+  function buy(quantity) {
+    var cost = ask * quantity;
+
+    if (cost > cash) {
+      throw new Error('Insufficient cash balance');
+    }
+
+    setCash(cash - cost);
+    setAmount(amount + quantity);
+  }
+
+  function sell(quantity) {
+    if (quantity > amount) {
+      throw new Error('Insufficient asset quantity');
+    }
+
+    var quoteQuantity = bid * quantity;
+    setAmount(amount - quantity);
+    setCash(cash + quoteQuantity);
+  }
+
+  return [amount, setAmount, buy, sell];
+}
+
+function Wallet(_ref4) {
+  var cash = _ref4.cash,
+      masks = _ref4.masks,
+      maskRate = _ref4.maskRate;
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+    flex: 2,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 10
+    }
+  }, __jsx("div", {
+    style: {
+      background: '#fcfbfa',
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      boxSizing: 'border-box'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 5
+    }
+  }, __jsx(AssetWithRate, {
+    label: "Cash",
+    amount: formatMoney(cash),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 148,
+      columnNumber: 7
+    }
+  }), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149,
+      columnNumber: 7
+    }
+  }), __jsx(AssetWithRate, {
+    label: "Masks",
+    amount: format(masks),
+    rate: format(maskRate),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 150,
+      columnNumber: 7
+    }
+  })), __jsx("div", {
+    style: {
+      background: '#ecebea',
       flex: 2
     },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 9
-    }
-  })), __jsx("div", {
-    style: {
-      background: '#888888',
-      flex: 1
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 7
-    }
-  }), __jsx("div", {
-    style: {
-      background: '#aaaaaa',
-      flex: 1
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 7
-    }
-  }), __jsx("div", {
-    style: {
-      background: '#bbbbbb',
-      flex: 1
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 7
+      lineNumber: 152,
+      columnNumber: 5
     }
   }));
+}
+
+function Trading(_ref5) {
+  var bid = _ref5.bid,
+      ask = _ref5.ask,
+      buy = _ref5.buy,
+      sell = _ref5.sell;
+
+  var _useNumericInput = useNumericInput(0),
+      _useNumericInput2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useNumericInput, 3),
+      buyAmount = _useNumericInput2[0],
+      buyAmountString = _useNumericInput2[1],
+      setBuyAmount = _useNumericInput2[2];
+
+  var _useNumericInput3 = useNumericInput(0),
+      _useNumericInput4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useNumericInput3, 3),
+      sellAmount = _useNumericInput4[0],
+      sellAmountString = _useNumericInput4[1],
+      setSellAmount = _useNumericInput4[2];
+
+  return __jsx("div", {
+    style: {
+      boxSizing: 'border-box',
+      background: '#acabaa',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160,
+      columnNumber: 10
+    }
+  }, __jsx("div", {
+    style: {
+      padding: '16px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161,
+      columnNumber: 5
+    }
+  }, __jsx("b", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161,
+      columnNumber: 38
+    }
+  }, "Trade")), __jsx(AssetWithRate, {
+    label: "Buy masks @",
+    amount: formatMoney(ask),
+    suffix: "/mask",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 163,
+      columnNumber: 5
+    }
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+    padding: "0 16px",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165,
+      columnNumber: 5
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+    placeholder: "Amount",
+    value: buyAmountString,
+    onChange: setBuyAmount,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 166,
+      columnNumber: 7
+    }
+  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["GameButton"], {
+    onClick: function onClick() {
+      return guard(buy)(buyAmount);
+    },
+    flex: 1,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 168,
+      columnNumber: 7
+    }
+  }, "Buy")), __jsx("br", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 171,
+      columnNumber: 5
+    }
+  }), __jsx(AssetWithRate, {
+    label: "Sell masks @",
+    amount: formatMoney(bid),
+    suffix: "/mask",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 173,
+      columnNumber: 5
+    }
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+    padding: "0 16px",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 5
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+    placeholder: "Amount",
+    value: sellAmountString,
+    onChange: setSellAmount,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 176,
+      columnNumber: 7
+    }
+  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["GameButton"], {
+    onClick: function onClick() {
+      return guard(sell)(sellAmount);
+    },
+    flex: 1,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 178,
+      columnNumber: 7
+    }
+  }, "Sell")));
+}
+
+function useNumericInput(initialValue) {
+  var _useState6 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialValue),
+      value = _useState6[0],
+      setValue = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialValue),
+      valueString = _useState7[0],
+      setValueString = _useState7[1];
+
+  function set(event) {
+    if (isNaN(event.target.value)) {
+      return;
+    }
+
+    setValue(parseFloat(event.target.value));
+    setValueString(event.target.value);
+  }
+
+  return [value, valueString, set];
+}
+
+function Orderbook() {
+  return __jsx("div", {
+    style: {
+      boxSizing: 'border-box',
+      background: '#121212',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 198,
+      columnNumber: 10
+    }
+  }, __jsx("div", {
+    style: {
+      color: 'white',
+      padding: '16px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 199,
+      columnNumber: 5
+    }
+  }, "(TODO) Orderbook"));
+}
+
+function AssetWithRate(_ref6) {
+  var label = _ref6.label,
+      amount = _ref6.amount,
+      rate = _ref6.rate,
+      suffix = _ref6.suffix;
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+    wide: true,
+    spaced: true,
+    padding: "16px",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 205,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 206,
+      columnNumber: 7
+    }
+  }, label), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+    right: true,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 207,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 208,
+      columnNumber: 9
+    }
+  }, amount, suffix), rate === undefined ? null : __jsx("div", {
+    style: {
+      fontSize: '16px',
+      lineHeight: '32px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 209,
+      columnNumber: 38
+    }
+  }, rate, " per second")));
+}
+
+function ItemWithAmount(_ref7) {
+  var onClick = _ref7.onClick,
+      label = _ref7.label,
+      amount = _ref7.amount,
+      price = _ref7.price;
+  return __jsx("div", {
+    onClick: onClick,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 217,
+      columnNumber: 5
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+    wide: true,
+    spaced: true,
+    padding: "16px",
+    middle: true,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 218,
+      columnNumber: 7
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 219,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 220,
+      columnNumber: 11
+    }
+  }, label), __jsx("div", {
+    style: {
+      fontSize: '16px',
+      lineHeight: '32px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 221,
+      columnNumber: 11
+    }
+  }, "Cost: ", formatMoney(price))), __jsx("div", {
+    style: {
+      fontSize: '32px',
+      lineHeight: '32px'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 223,
+      columnNumber: 9
+    }
+  }, amount)));
+}
+
+function guard(f) {
+  return function () {
+    try {
+      f.apply(void 0, arguments);
+    } catch (err) {
+      return alert(err.message);
+    }
+  };
+}
+
+function alert() {
+  if (true) {
+    var _window;
+
+    (_window = window).alert.apply(_window, arguments);
+  }
+}
+
+function format(x) {
+  return x.toFixed(2).toLocaleString();
+}
+
+function formatMoney(x) {
+  return "$".concat(x.toFixed(2).toLocaleString());
 }
 
 /***/ }),
@@ -214,12 +821,14 @@ function Slants(_ref2) {
 /*!**************************!*\
   !*** ./components/ui.js ***!
   \**************************/
-/*! exports provided: Button, Horizontal, Vertical */
+/*! exports provided: Button, GameButton, Input, Horizontal, Vertical */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return Button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameButton", function() { return GameButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Input", function() { return Input; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Horizontal", function() { return Horizontal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vertical", function() { return Vertical; });
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
@@ -232,10 +841,14 @@ var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 function Button(_ref) {
   var onClick = _ref.onClick,
+      flex = _ref.flex,
       children = _ref.children;
   return __jsx("div", {
     onClick: onClick,
-    className: "jsx-264138633",
+    style: {
+      flex: flex
+    },
+    className: "jsx-1353918059",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -243,43 +856,273 @@ function Button(_ref) {
       columnNumber: 5
     }
   }, children, __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "264138633",
+    id: "1353918059",
     __self: this
-  }, "div.jsx-264138633{background:#efefef;border-radius:4px;border:1px solid #1c002e;box-shadow:2px 2px 4px 0px rgba(0,0,0,0.3);cursor:pointer;font-size:22px;line-height:22px;padding:12px 40px;-webkit-transition:0.1s;transition:0.1s;}div.jsx-264138633:hover{background:#430d27;color:#efefef;box-shadow:4px 4px 4px 0px rgba(0,0,0,0.3);-webkit-transition:0.1s;transition:0.1s;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlrQixBQUc0QixBQVlBLG1CQVhELEFBWUosY0FDZ0MsSUFackIseUJBQ3FCLGNBWTlCLDZCQVhELFdBWWpCLElBWGlCLGVBQ0UsaUJBQ0Msa0JBQ0Ysd0NBQ2xCIiwiZmlsZSI6Ii9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGZ1bmN0aW9uIEJ1dHRvbiAoeyBvbkNsaWNrLCBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBvbkNsaWNrPXtvbkNsaWNrfT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIGJhY2tncm91bmQ6ICNlZmVmZWY7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzFjMDAyZTtcbiAgICAgICAgYm94LXNoYWRvdzogMnB4IDJweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDIycHg7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAyMnB4O1xuICAgICAgICBwYWRkaW5nOiAxMnB4IDQwcHg7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG5cbiAgICAgIGRpdjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7IFxuICAgICAgICBjb2xvcjogI2VmZWZlZjtcbiAgICAgICAgYm94LXNoYWRvdzogNHB4IDRweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEhvcml6b250YWwoeyBjaGlsZHJlbiwgZmxleCB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGZsZXhEaXJlY3Rpb246ICdyb3cnLCBmbGV4IH19PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvZGl2PlxuICApO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gVmVydGljYWwoeyBjaGlsZHJlbiwgZmxleCB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGZsZXhEaXJlY3Rpb246ICdjb2x1bW4nLCBmbGV4IH19PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvZGl2PlxuICApO1xufVxuIl19 */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/ui.js */"));
+  }, "div.jsx-1353918059{background:#efefef;border-radius:4px;border:1px solid #1c002e;box-shadow:2px 2px 4px 0px rgba(0,0,0,0.3);cursor:pointer;font-size:24px;line-height:24px;padding:12px 40px;text-align:center;-webkit-transition:0.1s;transition:0.1s;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}div.jsx-1353918059:hover{background:#430d27;color:#efefef;box-shadow:4px 4px 4px 0px rgba(0,0,0,0.3);-webkit-transition:0.1s;transition:0.1s;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlrQixBQUc0QixBQWNBLG1CQWJELEFBY0osY0FDZ0MsSUFkckIseUJBQ3FCLGNBYzlCLDZCQWJELFdBY2pCLElBYmlCLGVBQ0UsaUJBQ0Msa0JBQ0Esa0JBQ0Ysd0NBQ0MscUZBQ25CIiwiZmlsZSI6Ii9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGZ1bmN0aW9uIEJ1dHRvbiAoeyBvbkNsaWNrLCBmbGV4LCBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBvbkNsaWNrPXtvbkNsaWNrfSBzdHlsZT17e2ZsZXh9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIGJhY2tncm91bmQ6ICNlZmVmZWY7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzFjMDAyZTtcbiAgICAgICAgYm94LXNoYWRvdzogMnB4IDJweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDI0cHg7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICAgICAgICBwYWRkaW5nOiAxMnB4IDQwcHg7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIGRpdjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7IFxuICAgICAgICBjb2xvcjogI2VmZWZlZjtcbiAgICAgICAgYm94LXNoYWRvdzogNHB4IDRweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEdhbWVCdXR0b24gKHsgb25DbGljaywgZmxleCwgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXYgb25DbGljaz17b25DbGlja30gc3R5bGU9e3tmbGV4fX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xuICAgICAgICBib3JkZXItcmFkaXVzOiAycHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMxYzAwMmU7XG4gICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgICBoZWlnaHQ6IDQwcHg7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiA0MHB4O1xuICAgICAgICBwYWRkaW5nOiAwIDE2cHg7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIGRpdjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7IFxuICAgICAgICBjb2xvcjogI2VmZWZlZjtcbiAgICAgICAgYm94LXNoYWRvdzogMnB4IDJweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIElucHV0ICh7IHBsYWNlaG9sZGVyLCB2YWx1ZSwgb25DaGFuZ2UgfSkge1xuICByZXR1cm4gKFxuICAgIDxpbnB1dCBvbkNoYW5nZT17b25DaGFuZ2V9IHZhbHVlPXt2YWx1ZX0gc3R5bGU9e3tcbiAgICAgIGJvcmRlcjogJ25vbmUnLFxuICAgICAgYm9yZGVyUmFkaXVzOiAnMnB4JyxcbiAgICAgIGJveFNpemluZzogJ2JvcmRlci1ib3gnLFxuICAgICAgZm9udEZhbWlseTogJ1xcJ09wZW4gU2Fuc1xcJywgc2Fucy1zZXJpZicsXG4gICAgICBmb250U2l6ZTogJzIwcHgnLFxuICAgICAgaGVpZ2h0OiAnNDBweCcsXG4gICAgICBsaW5lSGVpZ2h0OiAnNDBweCcsXG4gICAgICBvdXRsaW5lOiAnbm9uZScsXG4gICAgICBwYWRkaW5nOiAnMCAxNnB4JyxcbiAgICAgIHdpZHRoOiAnMTAwJScsXG4gICAgfX0gcGxhY2Vob2xkZXI9e3BsYWNlaG9sZGVyfSAvPlxuICApO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gSG9yaXpvbnRhbCh7IGNoaWxkcmVuLCBmbGV4LCBzcGFjZWQsIHdpZGUsIHBhZGRpbmcsIG1pZGRsZSB9KSB7XG4gIGNvbnN0IHN0eWxlcyA9IHsgYm94U2l6aW5nOiAnYm9yZGVyLWJveCcsIGRpc3BsYXk6ICdmbGV4JywgZmxleERpcmVjdGlvbjogJ3JvdycsIGZsZXgsIHBhZGRpbmcgfTtcbiAgaWYgKHNwYWNlZCkgc3R5bGVzLmp1c3RpZnlDb250ZW50ID0gJ3NwYWNlLWJldHdlZW4nO1xuICBpZiAod2lkZSkgc3R5bGVzLndpZHRoID0gJzEwMCUnO1xuICBpZiAobWlkZGxlKSBzdHlsZXMuYWxpZ25JdGVtcyA9ICdjZW50ZXInO1xuICByZXR1cm4gKFxuICAgIDxkaXYgc3R5bGU9e3N0eWxlc30+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBWZXJ0aWNhbCh7IGNoaWxkcmVuLCBmbGV4LCBzcGFjZWQsIHJpZ2h0LCBwYWRkaW5nIH0pIHtcbiAgY29uc3Qgc3R5bGVzID0geyBib3hTaXppbmc6ICdib3JkZXItYm94JywgZGlzcGxheTogJ2ZsZXgnLCBmbGV4RGlyZWN0aW9uOiAnY29sdW1uJywgZmxleCwgcGFkZGluZyB9O1xuICBpZiAoc3BhY2VkKSBzdHlsZXMuanVzdGlmeUNvbnRlbnQgPSAnc3BhY2UtYmV0d2Vlbic7XG4gIGlmIChyaWdodCkgc3R5bGVzLnRleHRBbGlnbiA9ICdyaWdodCc7XG4gIHJldHVybiAoXG4gICAgPGRpdiBzdHlsZT17c3R5bGVzfT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICA8L2Rpdj5cbiAgKTtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/ui.js */"));
 }
-function Horizontal(_ref2) {
-  var children = _ref2.children,
-      flex = _ref2.flex;
+function GameButton(_ref2) {
+  var onClick = _ref2.onClick,
+      flex = _ref2.flex,
+      children = _ref2.children;
   return __jsx("div", {
+    onClick: onClick,
     style: {
-      display: 'flex',
-      flexDirection: 'row',
       flex: flex
     },
+    className: "jsx-1403181729",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 33,
+      columnNumber: 5
+    }
+  }, children, __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "1403181729",
+    __self: this
+  }, "div.jsx-1403181729{background:#efefef;border-radius:2px;border:1px solid #1c002e;box-sizing:border-box;cursor:pointer;font-size:20px;height:40px;line-height:40px;padding:0 16px;text-align:center;-webkit-transition:0.1s;transition:0.1s;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}div.jsx-1403181729:hover{background:#430d27;color:#efefef;box-shadow:2px 2px 4px 0px rgba(0,0,0,0.3);-webkit-transition:0.1s;transition:0.1s;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtDa0IsQUFHNEIsQUFlQSxtQkFkRCxBQWVKLGNBQ2dDLElBZnJCLHlCQUNILGNBZU4sUUFkRCxlQUNBLGVBQ0gsRUFhZCxVQVptQixpQkFDRixlQUNHLGtCQUNGLHdDQUNDLHFGQUNuQiIsImZpbGUiOiIvaG9tZS91c2VyL0RvY3VtZW50cy9AamF2YXNjcmlwdC9xdWFyYW50aW5lLWdhbWUvY29tcG9uZW50cy91aS5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBmdW5jdGlvbiBCdXR0b24gKHsgb25DbGljaywgZmxleCwgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXYgb25DbGljaz17b25DbGlja30gc3R5bGU9e3tmbGV4fX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMxYzAwMmU7XG4gICAgICAgIGJveC1zaGFkb3c6IDJweCAycHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAyNHB4O1xuICAgICAgICBsaW5lLWhlaWdodDogMjRweDtcbiAgICAgICAgcGFkZGluZzogMTJweCA0MHB4O1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICAgIHVzZXItc2VsZWN0OiBub25lO1xuICAgICAgfVxuXG4gICAgICBkaXY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNDMwZDI3OyBcbiAgICAgICAgY29sb3I6ICNlZmVmZWY7XG4gICAgICAgIGJveC1zaGFkb3c6IDRweCA0cHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBHYW1lQnV0dG9uICh7IG9uQ2xpY2ssIGZsZXgsIGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IG9uQ2xpY2s9e29uQ2xpY2t9IHN0eWxlPXt7ZmxleH19PlxuICAgICAge2NoaWxkcmVufVxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgZGl2IHtcbiAgICAgICAgYmFja2dyb3VuZDogI2VmZWZlZjtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMnB4O1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjMWMwMDJlO1xuICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgICAgICAgaGVpZ2h0OiA0MHB4O1xuICAgICAgICBsaW5lLWhlaWdodDogNDBweDtcbiAgICAgICAgcGFkZGluZzogMCAxNnB4O1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICAgIHVzZXItc2VsZWN0OiBub25lO1xuICAgICAgfVxuXG4gICAgICBkaXY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNDMwZDI3OyBcbiAgICAgICAgY29sb3I6ICNlZmVmZWY7XG4gICAgICAgIGJveC1zaGFkb3c6IDJweCAycHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBJbnB1dCAoeyBwbGFjZWhvbGRlciwgdmFsdWUsIG9uQ2hhbmdlIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8aW5wdXQgb25DaGFuZ2U9e29uQ2hhbmdlfSB2YWx1ZT17dmFsdWV9IHN0eWxlPXt7XG4gICAgICBib3JkZXI6ICdub25lJyxcbiAgICAgIGJvcmRlclJhZGl1czogJzJweCcsXG4gICAgICBib3hTaXppbmc6ICdib3JkZXItYm94JyxcbiAgICAgIGZvbnRGYW1pbHk6ICdcXCdPcGVuIFNhbnNcXCcsIHNhbnMtc2VyaWYnLFxuICAgICAgZm9udFNpemU6ICcyMHB4JyxcbiAgICAgIGhlaWdodDogJzQwcHgnLFxuICAgICAgbGluZUhlaWdodDogJzQwcHgnLFxuICAgICAgb3V0bGluZTogJ25vbmUnLFxuICAgICAgcGFkZGluZzogJzAgMTZweCcsXG4gICAgICB3aWR0aDogJzEwMCUnLFxuICAgIH19IHBsYWNlaG9sZGVyPXtwbGFjZWhvbGRlcn0gLz5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEhvcml6b250YWwoeyBjaGlsZHJlbiwgZmxleCwgc3BhY2VkLCB3aWRlLCBwYWRkaW5nLCBtaWRkbGUgfSkge1xuICBjb25zdCBzdHlsZXMgPSB7IGJveFNpemluZzogJ2JvcmRlci1ib3gnLCBkaXNwbGF5OiAnZmxleCcsIGZsZXhEaXJlY3Rpb246ICdyb3cnLCBmbGV4LCBwYWRkaW5nIH07XG4gIGlmIChzcGFjZWQpIHN0eWxlcy5qdXN0aWZ5Q29udGVudCA9ICdzcGFjZS1iZXR3ZWVuJztcbiAgaWYgKHdpZGUpIHN0eWxlcy53aWR0aCA9ICcxMDAlJztcbiAgaWYgKG1pZGRsZSkgc3R5bGVzLmFsaWduSXRlbXMgPSAnY2VudGVyJztcbiAgcmV0dXJuIChcbiAgICA8ZGl2IHN0eWxlPXtzdHlsZXN9PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvZGl2PlxuICApO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gVmVydGljYWwoeyBjaGlsZHJlbiwgZmxleCwgc3BhY2VkLCByaWdodCwgcGFkZGluZyB9KSB7XG4gIGNvbnN0IHN0eWxlcyA9IHsgYm94U2l6aW5nOiAnYm9yZGVyLWJveCcsIGRpc3BsYXk6ICdmbGV4JywgZmxleERpcmVjdGlvbjogJ2NvbHVtbicsIGZsZXgsIHBhZGRpbmcgfTtcbiAgaWYgKHNwYWNlZCkgc3R5bGVzLmp1c3RpZnlDb250ZW50ID0gJ3NwYWNlLWJldHdlZW4nO1xuICBpZiAocmlnaHQpIHN0eWxlcy50ZXh0QWxpZ24gPSAncmlnaHQnO1xuICByZXR1cm4gKFxuICAgIDxkaXYgc3R5bGU9e3N0eWxlc30+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXX0= */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/ui.js */"));
+}
+function Input(_ref3) {
+  var placeholder = _ref3.placeholder,
+      value = _ref3.value,
+      onChange = _ref3.onChange;
+  return __jsx("input", {
+    onChange: onChange,
+    value: value,
+    style: {
+      border: 'none',
+      borderRadius: '2px',
+      boxSizing: 'border-box',
+      fontFamily: '\'Open Sans\', sans-serif',
+      fontSize: '20px',
+      height: '40px',
+      lineHeight: '40px',
+      outline: 'none',
+      padding: '0 16px',
+      width: '100%'
+    },
+    placeholder: placeholder,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 5
+    }
+  });
+}
+function Horizontal(_ref4) {
+  var children = _ref4.children,
+      flex = _ref4.flex,
+      spaced = _ref4.spaced,
+      wide = _ref4.wide,
+      padding = _ref4.padding,
+      middle = _ref4.middle;
+  var styles = {
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'row',
+    flex: flex,
+    padding: padding
+  };
+  if (spaced) styles.justifyContent = 'space-between';
+  if (wide) styles.width = '100%';
+  if (middle) styles.alignItems = 'center';
+  return __jsx("div", {
+    style: styles,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
       columnNumber: 5
     }
   }, children);
 }
-function Vertical(_ref3) {
-  var children = _ref3.children,
-      flex = _ref3.flex;
+function Vertical(_ref5) {
+  var children = _ref5.children,
+      flex = _ref5.flex,
+      spaced = _ref5.spaced,
+      right = _ref5.right,
+      padding = _ref5.padding;
+  var styles = {
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: flex,
+    padding: padding
+  };
+  if (spaced) styles.justifyContent = 'space-between';
+  if (right) styles.textAlign = 'right';
   return __jsx("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: flex
-    },
+    style: styles,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 96,
       columnNumber: 5
     }
   }, children);
+}
+
+/***/ }),
+
+/***/ "./config/default.js":
+/*!***************************!*\
+  !*** ./config/default.js ***!
+  \***************************/
+/*! exports provided: tickLengthMs, initialCash, assets, initialPrices, upgrades, initialCosts, productionRates, getCost */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tickLengthMs", function() { return tickLengthMs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialCash", function() { return initialCash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assets", function() { return assets; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialPrices", function() { return initialPrices; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "upgrades", function() { return upgrades; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialCosts", function() { return initialCosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "productionRates", function() { return productionRates; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCost", function() { return getCost; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+
+var tickLengthMs = 100;
+var initialCash = 10;
+var assets = {
+  masks: 'masks'
+};
+var initialPrices = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, assets.masks, {
+  bid: 0.99,
+  ask: 1.01
+});
+var upgrades = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, assets.masks, {
+  employees: 'masks-employees'
+});
+var initialCosts = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, upgrades[assets.masks].employees, 10);
+var productionRates = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, upgrades[assets.masks].employees, 0.05);
+function getCost(initialCost, amount) {
+  var multiplier = 1 + 0.1 * Math.pow(amount, 3);
+  return Math.floor(initialCost * multiplier);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayWithHoles; });
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _iterableToArrayLimit; });
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _nonIterableRest; });
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _slicedToArray; });
+/* harmony import */ var _arrayWithHoles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js");
+/* harmony import */ var _iterableToArrayLimit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js");
+/* harmony import */ var _nonIterableRest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js");
+
+
+
+function _slicedToArray(arr, i) {
+  return Object(_arrayWithHoles__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || Object(_iterableToArrayLimit__WEBPACK_IMPORTED_MODULE_1__["default"])(arr, i) || Object(_nonIterableRest__WEBPACK_IMPORTED_MODULE_2__["default"])();
 }
 
 /***/ }),
@@ -1231,7 +2074,7 @@ var pages = {
   game: 'game'
 };
 function Index() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(pages.splash),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(pages.game),
       page = _useState[0],
       setPage = _useState[1];
 
