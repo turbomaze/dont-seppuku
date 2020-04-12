@@ -3,6 +3,8 @@ export function getPrice(initialPrice, amount) {
   return Math.floor(initialPrice * multiplier);
 }
 
+export const initialCash = 10;
+
 export const initialPrices = {
   masks: 10,
 };

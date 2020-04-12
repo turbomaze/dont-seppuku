@@ -1,6 +1,6 @@
-export function Button ({ onClick, children }) {
+export function Button ({ onClick, flex, children }) {
   return (
-    <div onClick={onClick}>
+    <div onClick={onClick} style={{flex}}>
       {children}
       <style jsx>{`
       div {
@@ -12,6 +12,7 @@ export function Button ({ onClick, children }) {
         font-size: 24px;
         line-height: 24px;
         padding: 12px 40px;
+        text-align: center;
         transition: 0.1s;
         user-select: none;
       }
@@ -24,6 +25,54 @@ export function Button ({ onClick, children }) {
       }
       `}</style>
     </div>
+  );
+}
+
+export function GameButton ({ onClick, flex, children }) {
+  return (
+    <div onClick={onClick} style={{flex}}>
+      {children}
+      <style jsx>{`
+      div {
+        background: #efefef;
+        border-radius: 2px;
+        border: 1px solid #1c002e;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 16px;
+        text-align: center;
+        transition: 0.1s;
+        user-select: none;
+      }
+
+      div:hover {
+        background: #430d27; 
+        color: #efefef;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
+        transition: 0.1s;
+      }
+      `}</style>
+    </div>
+  );
+}
+
+export function Input ({ placeholder }) {
+  return (
+    <input style={{
+      border: 'none',
+      borderRadius: '2px',
+      boxSizing: 'border-box',
+      fontFamily: '\'Open Sans\', sans-serif',
+      fontSize: '20px',
+      height: '40px',
+      lineHeight: '40px',
+      outline: 'none',
+      padding: '0 16px',
+      width: '100%',
+    }} placeholder={placeholder} />
   );
 }
 

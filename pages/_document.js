@@ -40,24 +40,6 @@ function GlobalStyles () {
         font-size: 24px;
         line-height: 24px;
       }
-
-      .horizontal {
-        display: flex;
-        flex-direction: row;
-      }
-
-      .vertical {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .acenter {
-        align-items: center;
-      }
-
-      .jcenter {
-        justify-content: center;
-      }
     `}</style>
   );
 }
