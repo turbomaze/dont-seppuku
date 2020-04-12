@@ -1,5 +1,289 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
+/***/ "./components/game.js":
+/*!****************************!*\
+  !*** ./components/game.js ***!
+  \****************************/
+/*! exports provided: Game */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Game", function() { return Game; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
+var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/game.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function Game() {
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_1__["Horizontal"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 5
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_1__["Vertical"], {
+    flex: 1,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    style: {
+      background: '#444444',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }), __jsx("div", {
+    style: {
+      background: '#666666',
+      flex: 2
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 9
+    }
+  })), __jsx("div", {
+    style: {
+      background: '#888888',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }), __jsx("div", {
+    style: {
+      background: '#aaaaaa',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 7
+    }
+  }), __jsx("div", {
+    style: {
+      background: '#bbbbbb',
+      flex: 1
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 7
+    }
+  }));
+}
+
+/***/ }),
+
+/***/ "./components/splash.js":
+/*!******************************!*\
+  !*** ./components/splash.js ***!
+  \******************************/
+/*! exports provided: Splash */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Splash", function() { return Splash; });
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
+var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/splash.js";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+function Splash(_ref) {
+  var onPlayNow = _ref.onPlayNow;
+  return __jsx("div", {
+    className: "jsx-1751646433",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 5
+    }
+  }, __jsx(Slants, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "jsx-1751646433" + " " + "container",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 9
+    }
+  }, __jsx("h1", {
+    className: "jsx-1751646433",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 11
+    }
+  }, "DONT SEPPUKU"), __jsx("div", {
+    className: "jsx-1751646433" + " " + "actions",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 11
+    }
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    onClick: onPlayNow,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 13
+    }
+  }, "Play now")))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "1751646433",
+    __self: this
+  }, ".container.jsx-1751646433{margin-top:-48px;-webkit-transform:skewY(4deg);-ms-transform:skewY(4deg);transform:skewY(4deg);}h1.jsx-1751646433{font-family:'Nosifer',sans-serif;font-size:64px;-webkit-transform:skewY(-4deg);-ms-transform:skewY(-4deg);transform:skewY(-4deg);}.actions.jsx-1751646433{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFha0IsQUFHMEIsQUFJaUIsQUFLckIsaUJBUlMsZ0JBSVAsZUFDUSwwQkFJQSxxQkFSekIsa0NBS0EsNENBSUEiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFjdGlvbnNcIj5cbiAgICAgICAgICAgIDxCdXR0b24gb25DbGljaz17b25QbGF5Tm93fT5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gU2xhbnRzICh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0wXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMVwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0zXCI+XG4gICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuc2xhbnQtMCB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1ODIyMzM7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTEge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNzEzMDQ1O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0yIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogI2M5NGU0ZTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMyB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNmY2ZiZmE7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8Lz5cbiAgKTtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
+}
+
+function Slants(_ref2) {
+  var children = _ref2.children;
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("div", {
+    className: "jsx-971851819" + " " + "slant-0",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "jsx-971851819" + " " + "slant-1",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-971851819" + " " + "slant-2",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 11
+    }
+  }, __jsx("div", {
+    className: "jsx-971851819" + " " + "slant-3",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 13
+    }
+  }, children)))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "971851819",
+    __self: this
+  }, ".slant-0.jsx-971851819{height:98.2545%;background:#582233;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-1.jsx-971851819{height:98.2545%;background:#713045;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-2.jsx-971851819{height:98.2545%;background:#c94e4e;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-3.jsx-971851819{height:98.2545%;background:#fcfbfa;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE2Q2tCLEFBR3lCLEFBS0EsQUFLQSxBQUtBLGdCQWRHLEFBS0EsQUFLQSxBQUtBLG1CQWRJLEFBS0EsQUFLQSxBQUtBLGlGQWR6QixBQUtBLEFBS0EsQUFLZSwwRUFDTSw2RkFDSSxtR0FDekIiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFjdGlvbnNcIj5cbiAgICAgICAgICAgIDxCdXR0b24gb25DbGljaz17b25QbGF5Tm93fT5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gU2xhbnRzICh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0wXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMVwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0zXCI+XG4gICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuc2xhbnQtMCB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1ODIyMzM7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTEge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNzEzMDQ1O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0yIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogI2M5NGU0ZTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMyB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNmY2ZiZmE7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8Lz5cbiAgKTtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
+}
+
+/***/ }),
+
+/***/ "./components/ui.js":
+/*!**************************!*\
+  !*** ./components/ui.js ***!
+  \**************************/
+/*! exports provided: Button, Horizontal, Vertical */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return Button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Horizontal", function() { return Horizontal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vertical", function() { return Vertical; });
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/ui.js";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+function Button(_ref) {
+  var onClick = _ref.onClick,
+      children = _ref.children;
+  return __jsx("div", {
+    onClick: onClick,
+    className: "jsx-264138633",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3,
+      columnNumber: 5
+    }
+  }, children, __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "264138633",
+    __self: this
+  }, "div.jsx-264138633{background:#efefef;border-radius:4px;border:1px solid #1c002e;box-shadow:2px 2px 4px 0px rgba(0,0,0,0.3);cursor:pointer;font-size:22px;line-height:22px;padding:12px 40px;-webkit-transition:0.1s;transition:0.1s;}div.jsx-264138633:hover{background:#430d27;color:#efefef;box-shadow:4px 4px 4px 0px rgba(0,0,0,0.3);-webkit-transition:0.1s;transition:0.1s;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlrQixBQUc0QixBQVlBLG1CQVhELEFBWUosY0FDZ0MsSUFackIseUJBQ3FCLGNBWTlCLDZCQVhELFdBWWpCLElBWGlCLGVBQ0UsaUJBQ0Msa0JBQ0Ysd0NBQ2xCIiwiZmlsZSI6Ii9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3VpLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGZ1bmN0aW9uIEJ1dHRvbiAoeyBvbkNsaWNrLCBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBvbkNsaWNrPXtvbkNsaWNrfT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIGJhY2tncm91bmQ6ICNlZmVmZWY7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzFjMDAyZTtcbiAgICAgICAgYm94LXNoYWRvdzogMnB4IDJweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDIycHg7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAyMnB4O1xuICAgICAgICBwYWRkaW5nOiAxMnB4IDQwcHg7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG5cbiAgICAgIGRpdjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7IFxuICAgICAgICBjb2xvcjogI2VmZWZlZjtcbiAgICAgICAgYm94LXNoYWRvdzogNHB4IDRweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEhvcml6b250YWwoeyBjaGlsZHJlbiwgZmxleCB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGZsZXhEaXJlY3Rpb246ICdyb3cnLCBmbGV4IH19PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvZGl2PlxuICApO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gVmVydGljYWwoeyBjaGlsZHJlbiwgZmxleCB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGZsZXhEaXJlY3Rpb246ICdjb2x1bW4nLCBmbGV4IH19PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvZGl2PlxuICApO1xufVxuIl19 */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/ui.js */"));
+}
+function Horizontal(_ref2) {
+  var children = _ref2.children,
+      flex = _ref2.flex;
+  return __jsx("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'row',
+      flex: flex
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 5
+    }
+  }, children);
+}
+function Vertical(_ref3) {
+  var children = _ref3.children,
+      flex = _ref3.flex;
+  return __jsx("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: flex
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 5
+    }
+  }, children);
+}
+
+/***/ }),
+
 /***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Fuser%2FDocuments%2F%40javascript%2Fquarantine-game%2Fpages%2Findex.js!./":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Fuser%2FDocuments%2F%40javascript%2Fquarantine-game%2Fpages%2Findex.js ***!
@@ -932,135 +1216,58 @@ module.exports = __webpack_require__(/*! ./dist/style */ "./node_modules/styled-
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/game */ "./components/game.js");
+/* harmony import */ var _components_splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/splash */ "./components/splash.js");
 var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/pages/index.js";
 
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+var pages = {
+  splash: 'splash',
+  game: 'game'
+};
 function Index() {
-  return __jsx("div", {
-    className: "jsx-1751646433",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 3,
-      columnNumber: 5
-    }
-  }, __jsx(Slants, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4,
-      columnNumber: 7
-    }
-  }, __jsx("div", {
-    className: "jsx-1751646433" + " " + "container",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 9
-    }
-  }, __jsx("h1", {
-    className: "jsx-1751646433",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 11
-    }
-  }, "DONT SEPPUKU"), __jsx("div", {
-    className: "jsx-1751646433" + " " + "actions",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 11
-    }
-  }, __jsx(Button, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 13
-    }
-  }, "Play now")))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "1751646433",
-    __self: this
-  }, ".container.jsx-1751646433{margin-top:-48px;-webkit-transform:skewY(4deg);-ms-transform:skewY(4deg);transform:skewY(4deg);}h1.jsx-1751646433{font-family:'Nosifer',sans-serif;font-size:64px;-webkit-transform:skewY(-4deg);-ms-transform:skewY(-4deg);transform:skewY(-4deg);}.actions.jsx-1751646433{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFXa0IsQUFHMEIsQUFJaUIsQUFLckIsaUJBUlMsZ0JBSVAsZUFDUSwwQkFJQSxxQkFSekIsa0NBS0EsNENBSUEiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSW5kZXggKCkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8U2xhbnRzPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRhaW5lclwiPlxuICAgICAgICAgIDxoMT5ET05UIFNFUFBVS1U8L2gxPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWN0aW9uc1wiPlxuICAgICAgICAgICAgPEJ1dHRvbj5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cblxuICAgICAgPEdsb2JhbFN0eWxlcyAvPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5mdW5jdGlvbiBCdXR0b24gKHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMxYzAwMmU7XG4gICAgICAgIGJveC1zaGFkb3c6IDJweCAycHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAyMnB4O1xuICAgICAgICBsaW5lLWhlaWdodDogMjJweDtcbiAgICAgICAgcGFkZGluZzogMTJweCA0MHB4O1xuICAgICAgICB0cmFuc2l0aW9uOiAwLjFzO1xuICAgICAgfVxuXG4gICAgICBkaXY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNDMwZDI3OyBcbiAgICAgICAgY29sb3I6ICNlZmVmZWY7XG4gICAgICAgIGJveC1zaGFkb3c6IDRweCA0cHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIFNsYW50cyAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTFcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTJcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtM1wiPlxuICAgICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnNsYW50LTAge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNTgyMjMzO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0xIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogIzcxMzA0NTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMiB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNjOTRlNGU7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTMge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZmNmYmZhO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC8+XG4gICk7XG59XG5cbmZ1bmN0aW9uIEdsb2JhbFN0eWxlcyAoKSB7XG4gIHJldHVybiAoXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcbiAgICAgIGh0bWwsIGJvZHksIGJvZHkgPiBkaXY6Zmlyc3QtY2hpbGQsIGRpdiNfX25leHQsIGRpdiNfX25leHQgPiBkaXYge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgIH1cblxuICAgICAgYm9keSB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7XG4gICAgICAgIGNvbG9yOiAjMWMwMDJlO1xuICAgICAgICBmb250LWZhbWlseTogJ09wZW4gU2FucycsIHNhbnMtc2VyaWY7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICApO1xufVxuIl19 */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/pages/index.js */"), __jsx(GlobalStyles, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 7
-    }
-  }));
-}
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(pages.splash),
+      page = _useState[0],
+      setPage = _useState[1];
 
-function Button(_ref) {
-  var children = _ref.children;
-  return __jsx("div", {
-    className: "jsx-264138633",
+  var content = __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 5
+      lineNumber: 10,
+      columnNumber: 17
     }
-  }, children, __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "264138633",
-    __self: this
-  }, "div.jsx-264138633{background:#efefef;border-radius:4px;border:1px solid #1c002e;box-shadow:2px 2px 4px 0px rgba(0,0,0,0.3);cursor:pointer;font-size:22px;line-height:22px;padding:12px 40px;-webkit-transition:0.1s;transition:0.1s;}div.jsx-264138633:hover{background:#430d27;color:#efefef;box-shadow:4px 4px 4px 0px rgba(0,0,0,0.3);-webkit-transition:0.1s;transition:0.1s;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFvQ2tCLEFBRzRCLEFBWUEsbUJBWEQsQUFZSixjQUNnQyxJQVpyQix5QkFDcUIsY0FZOUIsNkJBWEQsV0FZakIsSUFYaUIsZUFDRSxpQkFDQyxrQkFDRix3Q0FDbEIiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSW5kZXggKCkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8U2xhbnRzPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRhaW5lclwiPlxuICAgICAgICAgIDxoMT5ET05UIFNFUFBVS1U8L2gxPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWN0aW9uc1wiPlxuICAgICAgICAgICAgPEJ1dHRvbj5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cblxuICAgICAgPEdsb2JhbFN0eWxlcyAvPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5mdW5jdGlvbiBCdXR0b24gKHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMxYzAwMmU7XG4gICAgICAgIGJveC1zaGFkb3c6IDJweCAycHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAyMnB4O1xuICAgICAgICBsaW5lLWhlaWdodDogMjJweDtcbiAgICAgICAgcGFkZGluZzogMTJweCA0MHB4O1xuICAgICAgICB0cmFuc2l0aW9uOiAwLjFzO1xuICAgICAgfVxuXG4gICAgICBkaXY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNDMwZDI3OyBcbiAgICAgICAgY29sb3I6ICNlZmVmZWY7XG4gICAgICAgIGJveC1zaGFkb3c6IDRweCA0cHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIFNsYW50cyAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTFcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTJcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtM1wiPlxuICAgICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnNsYW50LTAge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNTgyMjMzO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0xIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogIzcxMzA0NTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMiB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNjOTRlNGU7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTMge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZmNmYmZhO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC8+XG4gICk7XG59XG5cbmZ1bmN0aW9uIEdsb2JhbFN0eWxlcyAoKSB7XG4gIHJldHVybiAoXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcbiAgICAgIGh0bWwsIGJvZHksIGJvZHkgPiBkaXY6Zmlyc3QtY2hpbGQsIGRpdiNfX25leHQsIGRpdiNfX25leHQgPiBkaXYge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgIH1cblxuICAgICAgYm9keSB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7XG4gICAgICAgIGNvbG9yOiAjMWMwMDJlO1xuICAgICAgICBmb250LWZhbWlseTogJ09wZW4gU2FucycsIHNhbnMtc2VyaWY7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICApO1xufVxuIl19 */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/pages/index.js */"));
-}
+  }, "Unknown UI error");
 
-function Slants(_ref2) {
-  var children = _ref2.children;
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("div", {
-    className: "jsx-971851819" + " " + "slant-0",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 7
-    }
-  }, __jsx("div", {
-    className: "jsx-971851819" + " " + "slant-1",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 9
-    }
-  }, __jsx("div", {
-    className: "jsx-971851819" + " " + "slant-2",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 11
-    }
-  }, __jsx("div", {
-    className: "jsx-971851819" + " " + "slant-3",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 13
-    }
-  }, children)))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "971851819",
-    __self: this
-  }, ".slant-0.jsx-971851819{height:98.2545%;background:#582233;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-1.jsx-971851819{height:98.2545%;background:#713045;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-2.jsx-971851819{height:98.2545%;background:#c94e4e;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-3.jsx-971851819{height:98.2545%;background:#fcfbfa;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF5RWtCLEFBR3lCLEFBS0EsQUFLQSxBQUtBLGdCQWRHLEFBS0EsQUFLQSxBQUtBLG1CQWRJLEFBS0EsQUFLQSxBQUtBLGlGQWR6QixBQUtBLEFBS0EsQUFLZSwwRUFDTSw2RkFDSSxtR0FDekIiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSW5kZXggKCkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8U2xhbnRzPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRhaW5lclwiPlxuICAgICAgICAgIDxoMT5ET05UIFNFUFBVS1U8L2gxPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWN0aW9uc1wiPlxuICAgICAgICAgICAgPEJ1dHRvbj5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cblxuICAgICAgPEdsb2JhbFN0eWxlcyAvPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5mdW5jdGlvbiBCdXR0b24gKHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICBkaXYge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZWZlZmVmO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMxYzAwMmU7XG4gICAgICAgIGJveC1zaGFkb3c6IDJweCAycHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAyMnB4O1xuICAgICAgICBsaW5lLWhlaWdodDogMjJweDtcbiAgICAgICAgcGFkZGluZzogMTJweCA0MHB4O1xuICAgICAgICB0cmFuc2l0aW9uOiAwLjFzO1xuICAgICAgfVxuXG4gICAgICBkaXY6aG92ZXIge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNDMwZDI3OyBcbiAgICAgICAgY29sb3I6ICNlZmVmZWY7XG4gICAgICAgIGJveC1zaGFkb3c6IDRweCA0cHggNHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIFNsYW50cyAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTFcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTJcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtM1wiPlxuICAgICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnNsYW50LTAge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNTgyMjMzO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0xIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogIzcxMzA0NTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMiB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNjOTRlNGU7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTMge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZmNmYmZhO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC8+XG4gICk7XG59XG5cbmZ1bmN0aW9uIEdsb2JhbFN0eWxlcyAoKSB7XG4gIHJldHVybiAoXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcbiAgICAgIGh0bWwsIGJvZHksIGJvZHkgPiBkaXY6Zmlyc3QtY2hpbGQsIGRpdiNfX25leHQsIGRpdiNfX25leHQgPiBkaXYge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgIH1cblxuICAgICAgYm9keSB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7XG4gICAgICAgIGNvbG9yOiAjMWMwMDJlO1xuICAgICAgICBmb250LWZhbWlseTogJ09wZW4gU2FucycsIHNhbnMtc2VyaWY7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICApO1xufVxuIl19 */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/pages/index.js */"));
-}
+  if (page === pages.splash) {
+    return __jsx(_components_splash__WEBPACK_IMPORTED_MODULE_2__["Splash"], {
+      onPlayNow: function onPlayNow() {
+        return setPage(pages.game);
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 12
+      }
+    });
+  } else if (page === pages.game) {
+    return __jsx(_components_game__WEBPACK_IMPORTED_MODULE_1__["Game"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 12
+      }
+    });
+  }
 
-function GlobalStyles() {
-  return __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "2997498894",
-    __self: this
-  }, "html,body,body>div:first-child,div#__next,div#__next>div{margin:0;padding:0;height:100%;overflow:hidden;}body{background:#430d27;color:#1c002e;font-family:'Open Sans',sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF3R3VCLEFBR2tCLEFBT1UsU0FOVCxVQUNFLEFBTUUsWUFMRSxFQU1vQixjQUx0QyxxQkFNQSIsImZpbGUiOiIvaG9tZS91c2VyL0RvY3VtZW50cy9AamF2YXNjcmlwdC9xdWFyYW50aW5lLWdhbWUvcGFnZXMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBJbmRleCAoKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxTbGFudHM+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29udGFpbmVyXCI+XG4gICAgICAgICAgPGgxPkRPTlQgU0VQUFVLVTwvaDE+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhY3Rpb25zXCI+XG4gICAgICAgICAgICA8QnV0dG9uPlBsYXkgbm93PC9CdXR0b24+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9TbGFudHM+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuY29udGFpbmVyIHtcbiAgICAgICAgbWFyZ2luLXRvcDogLTQ4cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koNGRlZyk7XG4gICAgICB9XG4gICAgICBoMSB7XG4gICAgICAgIGZvbnQtZmFtaWx5OiAnTm9zaWZlcicsIHNhbnMtc2VyaWY7XG4gICAgICAgIGZvbnQtc2l6ZTogNjRweDtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtNGRlZyk7XG4gICAgICB9XG4gICAgICAuYWN0aW9ucyB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuXG4gICAgICA8R2xvYmFsU3R5bGVzIC8+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIEJ1dHRvbiAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGRpdiB7XG4gICAgICAgIGJhY2tncm91bmQ6ICNlZmVmZWY7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzFjMDAyZTtcbiAgICAgICAgYm94LXNoYWRvdzogMnB4IDJweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDIycHg7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAyMnB4O1xuICAgICAgICBwYWRkaW5nOiAxMnB4IDQwcHg7XG4gICAgICAgIHRyYW5zaXRpb246IDAuMXM7XG4gICAgICB9XG5cbiAgICAgIGRpdjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM0MzBkMjc7IFxuICAgICAgICBjb2xvcjogI2VmZWZlZjtcbiAgICAgICAgYm94LXNoYWRvdzogNHB4IDRweCA0cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgdHJhbnNpdGlvbjogMC4xcztcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gU2xhbnRzICh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0wXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMVwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0zXCI+XG4gICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuc2xhbnQtMCB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1ODIyMzM7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTEge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNzEzMDQ1O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0yIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogI2M5NGU0ZTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMyB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNmY2ZiZmE7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8Lz5cbiAgKTtcbn1cblxuZnVuY3Rpb24gR2xvYmFsU3R5bGVzICgpIHtcbiAgcmV0dXJuIChcbiAgICA8c3R5bGUganN4IGdsb2JhbD57YFxuICAgICAgaHRtbCwgYm9keSwgYm9keSA+IGRpdjpmaXJzdC1jaGlsZCwgZGl2I19fbmV4dCwgZGl2I19fbmV4dCA+IGRpdiB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgfVxuXG4gICAgICBib2R5IHtcbiAgICAgICAgYmFja2dyb3VuZDogIzQzMGQyNztcbiAgICAgICAgY29sb3I6ICMxYzAwMmU7XG4gICAgICAgIGZvbnQtZmFtaWx5OiAnT3BlbiBTYW5zJywgc2Fucy1zZXJpZjtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gICk7XG59XG4iXX0= */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/pages/index.js */");
+  return content;
 }
 
 /***/ }),

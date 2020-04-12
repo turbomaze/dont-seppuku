@@ -9,9 +9,35 @@ export default class MainDocument extends Document {
         </Head>
         <body>
           <Main />
+
+          <GlobalStyles />
+
           <NextScript />
         </body>
       </Html>
     );
   }
+}
+
+function GlobalStyles () {
+  return (
+    <style jsx global>{`
+      html, body, body > div:first-child, div#__next, div#__next > div {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #430d27;
+        color: #1c002e;
+        font-family: 'Open Sans', sans-serif;
+      }
+    `}</style>
+  );
 }
