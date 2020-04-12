@@ -1,4 +1,2 @@
 node_modules
 .next
-docs/_next/static/webpack/static/development/*
-docs/_next/static/webpack/*.hot-update.json
