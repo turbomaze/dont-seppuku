@@ -8,8 +8,8 @@ export const assets = {
 
 export const initialPrices = {
   [assets.masks]: {
-    bid: 0.49,
-    ask: 0.51,
+    bid: 0.99,
+    ask: 1.01,
   }
 };
 

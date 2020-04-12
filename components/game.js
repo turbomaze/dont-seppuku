@@ -29,7 +29,20 @@ export function Game () {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      // compute new asset amounts
       setMasks(masks + maskRate);
+
+      // randomly modify the prices
+      if (Math.random() < 0.5) {
+        const halfSpread = 0.01;
+        const midPrice = (maskPrice.bid + maskPrice.ask) / 2;
+        const multiplier = (1 - halfSpread) + 2 * halfSpread * Math.random(); // martingale
+        const newMidPrice = multiplier * midPrice;
+        setMaskBidAsk({
+          bid: newMidPrice * (1 - halfSpread),
+          ask: newMidPrice * (1 + halfSpread),
+        });
+      }
     }, tickLengthMs);
     return () => clearInterval(interval);
   });
