@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Button, Horizontal, Vertical } from './ui';
-import { tickLengthMs } from '../config/default';
+import { Horizontal, Vertical } from './ui';
+import {
+  getPrice,
+  initialPrices,
+  productionRates,
+  tickLengthMs,
+} from '../config/default';
 
 export function Game () {
+  // state
   const [cash, setCash] = useState(0);
   const [masks, setMasks] = useState(0);
   const [employees, setEmployees] = useState(0);
-  const [employeeCost, setEmployeeCost] = useState(1);
-  const maskRate = 0.05 * employees;
+
+  // computed values
+  const employeeCost = getPrice(initialPrices.masks, employees);
+  const maskRate = productionRates.employees * employees;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,24 +32,16 @@ export function Game () {
           <br />
           <AssetWithRate label='Masks' amount={masks} rate={maskRate} />
         </div>
-        <div style={{ background: '#cccbca', flex: 2 }}></div>
+        <div style={{ background: '#ecebea', flex: 2 }}></div>
       </Vertical>
 
-      <div style={{ background: '#fcfbfa', flex: 1 }}>
-        <ItemWithAmount label='Employees' amount={employees} price={employeeCost} />
-        {/*
-        <Button onClick={() => setEmployees(employees + 1)}>
-          <div className='horizontal acenter' style={{ justifyContent: 'space-between' }}>
-            <div>({employees}) Employees</div>
-            <div>Hire 1</div>
-          </div>
-        </Button>
-        */}
+      <div style={{ background: '#dcdbda', flex: 1 }}>
+        <ItemWithAmount onClick={() => setEmployees(employees + 1)} label='Employees' amount={employees} price={employeeCost} />
       </div>
 
-      <div style={{ background: '#ecebea', flex: 1 }}></div>
+      <div style={{ background: '#cccbca', flex: 1 }}></div>
 
-      <div style={{ background: '#dcdbda', flex: 1 }}></div>
+      <div style={{ background: '#bcbbba', flex: 1 }}></div>
     </Horizontal>
   );
 }
@@ -58,15 +58,17 @@ function AssetWithRate({ label, amount, rate }) {
   );
 }
 
-function ItemWithAmount({ label, amount, price }) {
+function ItemWithAmount({ onClick, label, amount, price }) {
   return (
-    <Horizontal wide spaced padding='8px' middle>
-      <Vertical>
-        <div>{label}</div>
-        <div style={{ fontSize: '16px', lineHeight: '32px' }}>Cost: {formatMoney(price)}</div>
-      </Vertical>
-      <div style={{ fontSize: '32px', lineHeight: '32px' }}>{amount}</div>
-    </Horizontal>
+    <div onClick={onClick}>
+      <Horizontal wide spaced padding='8px' middle>
+        <Vertical>
+          <div>{label}</div>
+          <div style={{ fontSize: '16px', lineHeight: '32px' }}>Cost: {formatMoney(price)}</div>
+        </Vertical>
+        <div style={{ fontSize: '32px', lineHeight: '32px' }}>{amount}</div>
+      </Horizontal>
+    </div>
   );
 }
 
