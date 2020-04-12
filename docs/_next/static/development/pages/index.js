@@ -10,60 +10,65 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Game", function() { return Game; });
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
-/* harmony import */ var _config_default__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/default */ "./config/default.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui */ "./components/ui.js");
+/* harmony import */ var _config_default__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../config/default */ "./config/default.js");
+
 
 var _jsxFileName = "/home/user/Documents/@javascript/quarantine-game/components/game.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
-var assets = _config_default__WEBPACK_IMPORTED_MODULE_3__["assets"],
-    getCost = _config_default__WEBPACK_IMPORTED_MODULE_3__["getCost"],
-    initialCosts = _config_default__WEBPACK_IMPORTED_MODULE_3__["initialCosts"],
-    initialPrices = _config_default__WEBPACK_IMPORTED_MODULE_3__["initialPrices"],
-    productionRates = _config_default__WEBPACK_IMPORTED_MODULE_3__["productionRates"],
-    tickLengthMs = _config_default__WEBPACK_IMPORTED_MODULE_3__["tickLengthMs"],
-    upgrades = _config_default__WEBPACK_IMPORTED_MODULE_3__["upgrades"];
+var assets = _config_default__WEBPACK_IMPORTED_MODULE_5__["assets"],
+    getCost = _config_default__WEBPACK_IMPORTED_MODULE_5__["getCost"],
+    initialPrices = _config_default__WEBPACK_IMPORTED_MODULE_5__["initialPrices"],
+    tickLengthMs = _config_default__WEBPACK_IMPORTED_MODULE_5__["tickLengthMs"],
+    upgrades = _config_default__WEBPACK_IMPORTED_MODULE_5__["upgrades"],
+    upgradeSpecs = _config_default__WEBPACK_IMPORTED_MODULE_5__["upgradeSpecs"];
 function Game() {
+  var _buyables;
+
   // state
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(_config_default__WEBPACK_IMPORTED_MODULE_3__["initialCash"]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(_config_default__WEBPACK_IMPORTED_MODULE_5__["initialCash"]),
       cash = _useState[0],
       setCash = _useState[1];
 
-  var _useBuyable = useBuyable(initialCosts[upgrades[assets.masks].employees], cash, setCash),
-      _useBuyable2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useBuyable, 2),
-      employees = _useBuyable2[0],
-      buyEmployee = _useBuyable2[1];
-
   var _useBidAsk = useBidAsk(initialPrices[assets.masks]),
-      _useBidAsk2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useBidAsk, 2),
+      _useBidAsk2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useBidAsk, 2),
       maskPrice = _useBidAsk2[0],
       setMaskBidAsk = _useBidAsk2[1];
 
   var _useTradable = useTradable(0, maskPrice, cash, setCash),
-      _useTradable2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useTradable, 4),
+      _useTradable2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useTradable, 4),
       masks = _useTradable2[0],
       setMasks = _useTradable2[1],
       buyMasks = _useTradable2[2],
-      sellMasks = _useTradable2[3]; // computed values
+      sellMasks = _useTradable2[3];
 
+  var buyables = (_buyables = {}, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].employees, useBuyable(upgradeSpecs[upgrades[assets.masks].employees].initialCost, cash, setCash)), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].sewing, useBuyable(upgradeSpecs[upgrades[assets.masks].sewing].initialCost, cash, setCash)), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].conveyor, useBuyable(upgradeSpecs[upgrades[assets.masks].conveyor].initialCost, cash, setCash)), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].printer, useBuyable(upgradeSpecs[upgrades[assets.masks].printer].initialCost, cash, setCash)), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].factory, useBuyable(upgradeSpecs[upgrades[assets.masks].factory].initialCost, cash, setCash)), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_buyables, upgrades[assets.masks].fullAutomation, useBuyable(upgradeSpecs[upgrades[assets.masks].fullAutomation].initialCost, cash, setCash)), _buyables); // computed
 
-  var employeeCost = getCost(initialCosts[upgrades[assets.masks].employees], employees);
-  var maskRate = productionRates[upgrades[assets.masks].employees] * employees;
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+  var maskRate = Object.values(upgrades[assets.masks]).reduce(function (total, key) {
+    var amount = buyables[key][0];
+    return total + amount * upgradeSpecs[key].productionRate;
+  }, 0);
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     var interval = setInterval(function () {
       // compute new asset amounts
       setMasks(masks + maskRate); // randomly modify the prices
 
       if (Math.random() < 0.5) {
         var halfSpread = 0.01;
+        var volatility = 0.02;
         var midPrice = (maskPrice.bid + maskPrice.ask) / 2;
-        var multiplier = 1 - halfSpread + 2 * halfSpread * Math.random(); // martingale
+        var multiplier = 1 - volatility + 2 * volatility * Math.random(); // martingale
 
         var newMidPrice = multiplier * midPrice;
         setMaskBidAsk({
@@ -76,11 +81,11 @@ function Game() {
       return clearInterval(interval);
     };
   });
-  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 80,
       columnNumber: 5
     }
   }, __jsx(Wallet, {
@@ -90,23 +95,23 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 81,
       columnNumber: 7
     }
-  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Vertical"], {
     flex: 5,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 83,
       columnNumber: 7
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     flex: 1,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 84,
       columnNumber: 9
     }
   }, __jsx(Trading, {
@@ -117,22 +122,22 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 85,
       columnNumber: 11
     }
   }), __jsx(Orderbook, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 87,
       columnNumber: 11
     }
-  })), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  })), __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     flex: 2,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 90,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -143,7 +148,7 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 91,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -153,28 +158,17 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 92,
       columnNumber: 13
     }
   }, __jsx("b", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 92,
       columnNumber: 46
     }
-  }, "Mask production")), __jsx(ItemWithAmount, {
-    onClick: guard(buyEmployee),
-    label: "Employees",
-    amount: employees,
-    price: employeeCost,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 13
-    }
-  })), __jsx("div", {
+  }, "Mask production")), [upgrades[assets.masks].employees, upgrades[assets.masks].sewing, upgrades[assets.masks].conveyor, upgrades[assets.masks].printer, upgrades[assets.masks].factory, upgrades[assets.masks].fullAutomation].map(makeBuyable(buyables))), __jsx("div", {
     style: {
       background: '#cccbca',
       flex: 1
@@ -182,7 +176,7 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 106,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -192,14 +186,14 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 107,
       columnNumber: 13
     }
   }, __jsx("b", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 107,
       columnNumber: 46
     }
   }, "TODO production"))), __jsx("div", {
@@ -210,7 +204,7 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 110,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -220,21 +214,46 @@ function Game() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 111,
       columnNumber: 13
     }
   }, __jsx("b", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 111,
       columnNumber: 46
     }
   }, "TODO production"))))));
 }
 
+function makeBuyable(items) {
+  return function BuyableItem(key) {
+    var _items$key = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(items[key], 2),
+        currentAmount = _items$key[0],
+        buyFunction = _items$key[1];
+
+    var _upgradeSpecs$key = upgradeSpecs[key],
+        label = _upgradeSpecs$key.label,
+        initialCost = _upgradeSpecs$key.initialCost;
+    var cost = getCost(initialCost, currentAmount);
+    return __jsx(ItemWithAmount, {
+      onClick: guard(buyFunction),
+      label: label,
+      amount: currentAmount,
+      price: cost,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 124,
+        columnNumber: 12
+      }
+    });
+  };
+}
+
 function useBuyable(initialCost, cash, setCash) {
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(0),
       quantity = _useState2[0],
       setQuantity = _useState2[1];
 
@@ -256,11 +275,11 @@ function useBidAsk(_ref) {
   var initialBid = _ref.bid,
       initialAsk = _ref.ask;
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialBid),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(initialBid),
       bid = _useState3[0],
       setBid = _useState3[1];
 
-  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialAsk),
+  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(initialAsk),
       ask = _useState4[0],
       setAsk = _useState4[1];
 
@@ -281,7 +300,7 @@ function useTradable(initialAmount, _ref3, cash, setCash) {
   var bid = _ref3.bid,
       ask = _ref3.ask;
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialAmount),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(initialAmount),
       amount = _useState5[0],
       setAmount = _useState5[1];
 
@@ -313,12 +332,12 @@ function Wallet(_ref4) {
   var cash = _ref4.cash,
       masks = _ref4.masks,
       maskRate = _ref4.maskRate;
-  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Vertical"], {
     flex: 2,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 140,
+      lineNumber: 187,
       columnNumber: 10
     }
   }, __jsx("div", {
@@ -332,23 +351,42 @@ function Wallet(_ref4) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141,
+      lineNumber: 188,
       columnNumber: 5
     }
-  }, __jsx(AssetWithRate, {
+  }, __jsx("div", {
+    className: "jsx-2153152808",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 195,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-2153152808",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 196,
+      columnNumber: 9
+    }
+  }, "DONT SEPPUKU"), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    id: "2153152808",
+    __self: this
+  }, "h1.jsx-2153152808{border:8px solid;font-family:'Nosifer',sans-serif;font-size:24px;margin:16px 8px;padding:12px 8px 8px;text-align:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL2dhbWUuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBb01vQixBQUc0QixpQkFDaUIsaUNBQ25CLGVBQ0MsZ0JBQ0sscUJBQ0gsa0JBQ3BCIiwiZmlsZSI6Ii9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL2dhbWUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VTdGF0ZSwgdXNlRWZmZWN0IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgR2FtZUJ1dHRvbiwgSW5wdXQsIEhvcml6b250YWwsIFZlcnRpY2FsIH0gZnJvbSAnLi91aSc7XG5pbXBvcnQgKiBhcyBjb25maWcgIGZyb20gJy4uL2NvbmZpZy9kZWZhdWx0JztcblxuY29uc3Qge1xuICBhc3NldHMsXG4gIGdldENvc3QsXG4gIGluaXRpYWxQcmljZXMsXG4gIHRpY2tMZW5ndGhNcyxcbiAgdXBncmFkZXMsXG4gIHVwZ3JhZGVTcGVjcyxcbn0gPSBjb25maWc7XG5cbmV4cG9ydCBmdW5jdGlvbiBHYW1lICgpIHtcbiAgLy8gc3RhdGVcbiAgY29uc3QgW2Nhc2gsIHNldENhc2hdID0gdXNlU3RhdGUoY29uZmlnLmluaXRpYWxDYXNoKTtcbiAgY29uc3QgW21hc2tQcmljZSwgc2V0TWFza0JpZEFza10gPSB1c2VCaWRBc2soaW5pdGlhbFByaWNlc1thc3NldHMubWFza3NdKTtcbiAgY29uc3QgW21hc2tzLCBzZXRNYXNrcywgYnV5TWFza3MsIHNlbGxNYXNrc10gPSB1c2VUcmFkYWJsZSgwLCBtYXNrUHJpY2UsIGNhc2gsIHNldENhc2gpO1xuICBjb25zdCBidXlhYmxlcyA9IHtcbiAgICBbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5lbXBsb3llZXNdOiB1c2VCdXlhYmxlKFxuICAgICAgdXBncmFkZVNwZWNzW3VwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uZW1wbG95ZWVzXS5pbml0aWFsQ29zdCxcbiAgICAgIGNhc2gsXG4gICAgICBzZXRDYXNoXG4gICAgKSxcbiAgICBbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5zZXdpbmddOiB1c2VCdXlhYmxlKFxuICAgICAgdXBncmFkZVNwZWNzW3VwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uc2V3aW5nXS5pbml0aWFsQ29zdCxcbiAgICAgIGNhc2gsXG4gICAgICBzZXRDYXNoXG4gICAgKSxcbiAgICBbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5jb252ZXlvcl06IHVzZUJ1eWFibGUoXG4gICAgICB1cGdyYWRlU3BlY3NbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5jb252ZXlvcl0uaW5pdGlhbENvc3QsXG4gICAgICBjYXNoLFxuICAgICAgc2V0Q2FzaFxuICAgICksXG4gICAgW3VwZ3JhZGVzW2Fzc2V0cy5tYXNrc10ucHJpbnRlcl06IHVzZUJ1eWFibGUoXG4gICAgICB1cGdyYWRlU3BlY3NbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5wcmludGVyXS5pbml0aWFsQ29zdCxcbiAgICAgIGNhc2gsXG4gICAgICBzZXRDYXNoXG4gICAgKSxcbiAgICBbdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5mYWN0b3J5XTogdXNlQnV5YWJsZShcbiAgICAgIHVwZ3JhZGVTcGVjc1t1cGdyYWRlc1thc3NldHMubWFza3NdLmZhY3RvcnldLmluaXRpYWxDb3N0LFxuICAgICAgY2FzaCxcbiAgICAgIHNldENhc2hcbiAgICApLFxuICAgIFt1cGdyYWRlc1thc3NldHMubWFza3NdLmZ1bGxBdXRvbWF0aW9uXTogdXNlQnV5YWJsZShcbiAgICAgIHVwZ3JhZGVTcGVjc1t1cGdyYWRlc1thc3NldHMubWFza3NdLmZ1bGxBdXRvbWF0aW9uXS5pbml0aWFsQ29zdCxcbiAgICAgIGNhc2gsXG4gICAgICBzZXRDYXNoXG4gICAgKSxcbiAgfTtcblxuICAvLyBjb21wdXRlZFxuICBjb25zdCBtYXNrUmF0ZSA9IE9iamVjdC52YWx1ZXModXBncmFkZXNbYXNzZXRzLm1hc2tzXSkucmVkdWNlKCh0b3RhbCwga2V5KSA9PiB7XG4gICAgY29uc3QgYW1vdW50ID0gYnV5YWJsZXNba2V5XVswXTtcbiAgICByZXR1cm4gdG90YWwgKyBhbW91bnQgKiB1cGdyYWRlU3BlY3Nba2V5XS5wcm9kdWN0aW9uUmF0ZTtcbiAgfSwgMCk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBjb25zdCBpbnRlcnZhbCA9IHNldEludGVydmFsKCgpID0+IHtcbiAgICAgIC8vIGNvbXB1dGUgbmV3IGFzc2V0IGFtb3VudHNcbiAgICAgIHNldE1hc2tzKG1hc2tzICsgbWFza1JhdGUpO1xuXG4gICAgICAvLyByYW5kb21seSBtb2RpZnkgdGhlIHByaWNlc1xuICAgICAgaWYgKE1hdGgucmFuZG9tKCkgPCAwLjUpIHtcbiAgICAgICAgY29uc3QgaGFsZlNwcmVhZCA9IDAuMDE7XG4gICAgICAgIGNvbnN0IHZvbGF0aWxpdHkgPSAwLjAyO1xuICAgICAgICBjb25zdCBtaWRQcmljZSA9IChtYXNrUHJpY2UuYmlkICsgbWFza1ByaWNlLmFzaykgLyAyO1xuICAgICAgICBjb25zdCBtdWx0aXBsaWVyID0gKDEgLSB2b2xhdGlsaXR5KSArIDIgKiB2b2xhdGlsaXR5ICogTWF0aC5yYW5kb20oKTsgLy8gbWFydGluZ2FsZVxuICAgICAgICBjb25zdCBuZXdNaWRQcmljZSA9IG11bHRpcGxpZXIgKiBtaWRQcmljZTtcbiAgICAgICAgc2V0TWFza0JpZEFzayh7XG4gICAgICAgICAgYmlkOiBuZXdNaWRQcmljZSAqICgxIC0gaGFsZlNwcmVhZCksXG4gICAgICAgICAgYXNrOiBuZXdNaWRQcmljZSAqICgxICsgaGFsZlNwcmVhZCksXG4gICAgICAgIH0pO1xuICAgICAgfVxuICAgIH0sIHRpY2tMZW5ndGhNcyk7XG4gICAgcmV0dXJuICgpID0+IGNsZWFySW50ZXJ2YWwoaW50ZXJ2YWwpO1xuICB9KTtcblxuICByZXR1cm4gKFxuICAgIDxIb3Jpem9udGFsPlxuICAgICAgPFdhbGxldCBjYXNoPXtjYXNofSBtYXNrcz17bWFza3N9IG1hc2tSYXRlPXttYXNrUmF0ZX0gLz5cblxuICAgICAgPFZlcnRpY2FsIGZsZXg9ezV9PlxuICAgICAgICA8SG9yaXpvbnRhbCBmbGV4PXsxfT5cbiAgICAgICAgICA8VHJhZGluZyBiaWQ9e21hc2tQcmljZS5iaWR9IGFzaz17bWFza1ByaWNlLmFza30gYnV5PXtidXlNYXNrc30gc2VsbD17c2VsbE1hc2tzfSAvPlxuXG4gICAgICAgICAgPE9yZGVyYm9vayAvPlxuICAgICAgICA8L0hvcml6b250YWw+XG5cbiAgICAgICAgPEhvcml6b250YWwgZmxleD17Mn0+XG4gICAgICAgICAgPGRpdiBzdHlsZT17eyBiYWNrZ3JvdW5kOiAnI2RjZGJkYScsIGZsZXg6IDEgfX0+XG4gICAgICAgICAgICA8ZGl2IHN0eWxlPXt7IHBhZGRpbmc6ICcxNnB4JyB9fT48Yj5NYXNrIHByb2R1Y3Rpb248L2I+PC9kaXY+XG5cbiAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgW1xuICAgICAgICAgICAgICAgIHVwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uZW1wbG95ZWVzLFxuICAgICAgICAgICAgICAgIHVwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uc2V3aW5nLFxuICAgICAgICAgICAgICAgIHVwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uY29udmV5b3IsXG4gICAgICAgICAgICAgICAgdXBncmFkZXNbYXNzZXRzLm1hc2tzXS5wcmludGVyLFxuICAgICAgICAgICAgICAgIHVwZ3JhZGVzW2Fzc2V0cy5tYXNrc10uZmFjdG9yeSxcbiAgICAgICAgICAgICAgICB1cGdyYWRlc1thc3NldHMubWFza3NdLmZ1bGxBdXRvbWF0aW9uLFxuICAgICAgICAgICAgICBdLm1hcChtYWtlQnV5YWJsZShidXlhYmxlcykpXG4gICAgICAgICAgICB9XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGJhY2tncm91bmQ6ICcjY2NjYmNhJywgZmxleDogMSB9fT5cbiAgICAgICAgICAgIDxkaXYgc3R5bGU9e3sgcGFkZGluZzogJzE2cHgnIH19PjxiPlRPRE8gcHJvZHVjdGlvbjwvYj48L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIDxkaXYgc3R5bGU9e3sgYmFja2dyb3VuZDogJyNiY2JiYmEnLCBmbGV4OiAxIH19PlxuICAgICAgICAgICAgPGRpdiBzdHlsZT17eyBwYWRkaW5nOiAnMTZweCcgfX0+PGI+VE9ETyBwcm9kdWN0aW9uPC9iPjwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L0hvcml6b250YWw+XG4gICAgICA8L1ZlcnRpY2FsPlxuICAgIDwvSG9yaXpvbnRhbD5cbiAgKTtcbn1cblxuZnVuY3Rpb24gbWFrZUJ1eWFibGUoaXRlbXMpIHtcbiAgcmV0dXJuIGZ1bmN0aW9uIEJ1eWFibGVJdGVtKGtleSkge1xuICAgIGNvbnN0IFtjdXJyZW50QW1vdW50LCBidXlGdW5jdGlvbl0gPSBpdGVtc1trZXldO1xuICAgIGNvbnN0IHsgbGFiZWwsIGluaXRpYWxDb3N0IH0gPSB1cGdyYWRlU3BlY3Nba2V5XTtcbiAgICBjb25zdCBjb3N0ID0gZ2V0Q29zdChpbml0aWFsQ29zdCwgY3VycmVudEFtb3VudCk7XG4gICAgcmV0dXJuIDxJdGVtV2l0aEFtb3VudFxuICAgICAgb25DbGljaz17Z3VhcmQoYnV5RnVuY3Rpb24pfVxuICAgICAgbGFiZWw9e2xhYmVsfVxuICAgICAgYW1vdW50PXtjdXJyZW50QW1vdW50fVxuICAgICAgcHJpY2U9e2Nvc3R9IC8+O1xuICB9O1xufVxuXG5mdW5jdGlvbiB1c2VCdXlhYmxlKGluaXRpYWxDb3N0LCBjYXNoLCBzZXRDYXNoKSB7XG4gIGNvbnN0IFtxdWFudGl0eSwgc2V0UXVhbnRpdHldID0gdXNlU3RhdGUoMCk7XG5cbiAgZnVuY3Rpb24gYnV5KCkge1xuICAgIGNvbnN0IGNvc3QgPSBnZXRDb3N0KGluaXRpYWxDb3N0LCBxdWFudGl0eSk7XG4gICAgaWYgKGNvc3QgPiBjYXNoKSB7XG4gICAgICB0aHJvdyBuZXcgRXJyb3IoJ0luc3VmZmljaWVudCBjYXNoIGJhbGFuY2UnKTtcbiAgICB9XG5cbiAgICBzZXRDYXNoKGNhc2ggLSBjb3N0KTtcbiAgICBzZXRRdWFudGl0eShxdWFudGl0eSArIDEpO1xuICB9XG5cbiAgcmV0dXJuIFtxdWFudGl0eSwgYnV5XTtcbn1cblxuZnVuY3Rpb24gdXNlQmlkQXNrKHsgYmlkOiBpbml0aWFsQmlkLCBhc2s6IGluaXRpYWxBc2sgfSkge1xuICBjb25zdCBbYmlkLCBzZXRCaWRdID0gdXNlU3RhdGUoaW5pdGlhbEJpZCk7XG4gIGNvbnN0IFthc2ssIHNldEFza10gPSB1c2VTdGF0ZShpbml0aWFsQXNrKTtcblxuICBmdW5jdGlvbiBzZXRCaWRBc2soeyBiaWQ6IG5ld0JpZCwgYXNrOiBuZXdBc2sgfSkge1xuICAgIHNldEJpZChuZXdCaWQpO1xuICAgIHNldEFzayhuZXdBc2spO1xuICB9XG5cbiAgcmV0dXJuIFt7IGJpZCwgYXNrIH0sIHNldEJpZEFza107XG59XG5cbmZ1bmN0aW9uIHVzZVRyYWRhYmxlKGluaXRpYWxBbW91bnQsIHsgYmlkLCBhc2sgfSwgY2FzaCwgc2V0Q2FzaCkge1xuICBjb25zdCBbYW1vdW50LCBzZXRBbW91bnRdID0gdXNlU3RhdGUoaW5pdGlhbEFtb3VudCk7XG5cbiAgZnVuY3Rpb24gYnV5KHF1YW50aXR5KSB7XG4gICAgY29uc3QgY29zdCA9IGFzayAqIHF1YW50aXR5O1xuICAgIGlmIChjb3N0ID4gY2FzaCkge1xuICAgICAgdGhyb3cgbmV3IEVycm9yKCdJbnN1ZmZpY2llbnQgY2FzaCBiYWxhbmNlJyk7XG4gICAgfVxuXG4gICAgc2V0Q2FzaChjYXNoIC0gY29zdCk7XG4gICAgc2V0QW1vdW50KGFtb3VudCArIHF1YW50aXR5KTtcbiAgfVxuXG4gIGZ1bmN0aW9uIHNlbGwocXVhbnRpdHkpIHtcbiAgICBpZiAocXVhbnRpdHkgPiBhbW91bnQpIHtcbiAgICAgIHRocm93IG5ldyBFcnJvcignSW5zdWZmaWNpZW50IGFzc2V0IHF1YW50aXR5Jyk7XG4gICAgfVxuXG4gICAgY29uc3QgcXVvdGVRdWFudGl0eSA9IGJpZCAqIHF1YW50aXR5O1xuICAgIHNldEFtb3VudChhbW91bnQgLSBxdWFudGl0eSk7XG4gICAgc2V0Q2FzaChjYXNoICsgcXVvdGVRdWFudGl0eSk7XG4gIH1cblxuICByZXR1cm4gW2Ftb3VudCwgc2V0QW1vdW50LCBidXksIHNlbGxdO1xufVxuXG5mdW5jdGlvbiBXYWxsZXQoeyBjYXNoLCBtYXNrcywgbWFza1JhdGUgfSkge1xuICByZXR1cm4gPFZlcnRpY2FsIGZsZXg9ezJ9PlxuICAgIDxkaXYgc3R5bGU9e3tcbiAgICAgIGJhY2tncm91bmQ6ICcjZmNmYmZhJyxcbiAgICAgIGZsZXg6IDEsXG4gICAgICBkaXNwbGF5OiAnZmxleCcsXG4gICAgICBmbGV4RGlyZWN0aW9uOiAnY29sdW1uJyxcbiAgICAgIGJveFNpemluZzogJ2JvcmRlci1ib3gnLFxuICAgIH19PlxuICAgICAgPGRpdj5cbiAgICAgICAgPGgxPkRPTlQgU0VQUFVLVTwvaDE+XG4gICAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgaDEge1xuICAgICAgICAgIGJvcmRlcjogOHB4IHNvbGlkO1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAnTm9zaWZlcicsIHNhbnMtc2VyaWY7XG4gICAgICAgICAgZm9udC1zaXplOiAyNHB4O1xuICAgICAgICAgIG1hcmdpbjogMTZweCA4cHg7XG4gICAgICAgICAgcGFkZGluZzogMTJweCA4cHggOHB4O1xuICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgfVxuICAgICAgICBgfTwvc3R5bGU+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxBc3NldFdpdGhSYXRlIGxhYmVsPSdDYXNoJyBhbW91bnQ9e2Zvcm1hdE1vbmV5KGNhc2gpfSAvPlxuICAgICAgPGJyIC8+XG4gICAgICA8QXNzZXRXaXRoUmF0ZSBsYWJlbD0nTWFza3MnIGFtb3VudD17Zm9ybWF0KG1hc2tzKX0gcmF0ZT17Zm9ybWF0KG1hc2tSYXRlKX0gLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IHN0eWxlPXt7IGJhY2tncm91bmQ6ICcjZWNlYmVhJywgZmxleDogMiB9fT48L2Rpdj5cbiAgPC9WZXJ0aWNhbD47XG59XG5cbmZ1bmN0aW9uIFRyYWRpbmcoeyBiaWQsIGFzaywgYnV5LCBzZWxsIH0pIHtcbiAgY29uc3QgW2J1eUFtb3VudCwgYnV5QW1vdW50U3RyaW5nLCBzZXRCdXlBbW91bnRdID0gdXNlTnVtZXJpY0lucHV0KDApO1xuICBjb25zdCBbc2VsbEFtb3VudCwgc2VsbEFtb3VudFN0cmluZywgc2V0U2VsbEFtb3VudF0gPSB1c2VOdW1lcmljSW5wdXQoMCk7XG5cbiAgcmV0dXJuIDxkaXYgc3R5bGU9e3sgYm94U2l6aW5nOiAnYm9yZGVyLWJveCcsIGJhY2tncm91bmQ6ICcjYWNhYmFhJywgZmxleDogMSB9fT5cbiAgICA8ZGl2IHN0eWxlPXt7IHBhZGRpbmc6ICcxNnB4JyB9fT48Yj5UcmFkZTwvYj48L2Rpdj5cblxuICAgIDxBc3NldFdpdGhSYXRlIGxhYmVsPSdCdXkgbWFza3MgQCcgYW1vdW50PXtmb3JtYXRNb25leShhc2spfSBzdWZmaXg9Jy9tYXNrJyAvPlxuXG4gICAgPEhvcml6b250YWwgcGFkZGluZz0nMCAxNnB4Jz5cbiAgICAgIDxJbnB1dCBwbGFjZWhvbGRlcj0nQW1vdW50JyB2YWx1ZT17YnV5QW1vdW50U3RyaW5nfSBvbkNoYW5nZT17c2V0QnV5QW1vdW50fSAvPlxuICAgICAgJm5ic3A7XG4gICAgICA8R2FtZUJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBndWFyZChidXkpKGJ1eUFtb3VudCl9IGZsZXg9ezF9PkJ1eTwvR2FtZUJ1dHRvbj5cbiAgICA8L0hvcml6b250YWw+XG5cbiAgICA8YnIgLz5cblxuICAgIDxBc3NldFdpdGhSYXRlIGxhYmVsPSdTZWxsIG1hc2tzIEAnIGFtb3VudD17Zm9ybWF0TW9uZXkoYmlkKX0gc3VmZml4PScvbWFzaycgLz5cblxuICAgIDxIb3Jpem9udGFsIHBhZGRpbmc9JzAgMTZweCc+XG4gICAgICA8SW5wdXQgcGxhY2Vob2xkZXI9J0Ftb3VudCcgdmFsdWU9e3NlbGxBbW91bnRTdHJpbmd9IG9uQ2hhbmdlPXtzZXRTZWxsQW1vdW50fSAvPlxuICAgICAgJm5ic3A7XG4gICAgICA8R2FtZUJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBndWFyZChzZWxsKShzZWxsQW1vdW50KX0gZmxleD17MX0+U2VsbDwvR2FtZUJ1dHRvbj5cbiAgICA8L0hvcml6b250YWw+XG4gIDwvZGl2Pjtcbn1cblxuZnVuY3Rpb24gdXNlTnVtZXJpY0lucHV0KGluaXRpYWxWYWx1ZSkge1xuICBjb25zdCBbdmFsdWUsIHNldFZhbHVlXSA9IHVzZVN0YXRlKGluaXRpYWxWYWx1ZSk7XG4gIGNvbnN0IFt2YWx1ZVN0cmluZywgc2V0VmFsdWVTdHJpbmddID0gdXNlU3RhdGUoaW5pdGlhbFZhbHVlKTtcbiAgZnVuY3Rpb24gc2V0KGV2ZW50KSB7XG4gICAgaWYgKGlzTmFOKGV2ZW50LnRhcmdldC52YWx1ZSkpIHtcbiAgICAgIHJldHVybjtcbiAgICB9XG5cbiAgICBzZXRWYWx1ZShwYXJzZUZsb2F0KGV2ZW50LnRhcmdldC52YWx1ZSkpO1xuICAgIHNldFZhbHVlU3RyaW5nKGV2ZW50LnRhcmdldC52YWx1ZSk7XG4gIH1cbiAgcmV0dXJuIFt2YWx1ZSwgdmFsdWVTdHJpbmcsIHNldF07XG59XG5cbmZ1bmN0aW9uIE9yZGVyYm9vaygpIHtcbiAgcmV0dXJuIDxkaXYgc3R5bGU9e3sgYm94U2l6aW5nOiAnYm9yZGVyLWJveCcsIGJhY2tncm91bmQ6ICcjMTIxMjEyJywgZmxleDogMSB9fT5cbiAgICA8ZGl2IHN0eWxlPXt7Y29sb3I6J3doaXRlJywgcGFkZGluZzogJzE2cHgnfX0+KFRPRE8pIE9yZGVyYm9vazwvZGl2PlxuICA8L2Rpdj47XG59XG5cbmZ1bmN0aW9uIEFzc2V0V2l0aFJhdGUoeyBsYWJlbCwgYW1vdW50LCByYXRlLCBzdWZmaXggfSkge1xuICBjb25zdCBwZXJTZWNvbmRSYXRlID0gcmF0ZSAqICgxMDAwIC8gdGlja0xlbmd0aE1zKTtcbiAgcmV0dXJuIChcbiAgICA8SG9yaXpvbnRhbCB3aWRlIHNwYWNlZCBwYWRkaW5nPSc4cHggMTZweCc+XG4gICAgICA8ZGl2PntsYWJlbH08L2Rpdj5cbiAgICAgIDxWZXJ0aWNhbCByaWdodD5cbiAgICAgICAgPGRpdj57YW1vdW50fXtzdWZmaXh9PC9kaXY+XG4gICAgICAgIHtyYXRlICE9PSB1bmRlZmluZWQgPyAoXG4gICAgICAgICAgPGRpdiBzdHlsZT17eyBmb250U2l6ZTogJzE2cHgnLCBsaW5lSGVpZ2h0OiAnMzJweCcgfX0+e3BlclNlY29uZFJhdGV9IHBlciBzZWNvbmQ8L2Rpdj5cbiAgICAgICAgKSA6IG51bGx9XG4gICAgICA8L1ZlcnRpY2FsPlxuICAgIDwvSG9yaXpvbnRhbD5cbiAgKTtcbn1cblxuZnVuY3Rpb24gSXRlbVdpdGhBbW91bnQoeyBvbkNsaWNrLCBsYWJlbCwgYW1vdW50LCBwcmljZSB9KSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBvbkNsaWNrPXtvbkNsaWNrfT5cbiAgICAgIDxIb3Jpem9udGFsIHdpZGUgc3BhY2VkIHBhZGRpbmc9JzhweCAxNnB4JyBtaWRkbGU+XG4gICAgICAgIDxWZXJ0aWNhbD5cbiAgICAgICAgICA8ZGl2PntsYWJlbH08L2Rpdj5cbiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRTaXplOiAnMTZweCcsIGxpbmVIZWlnaHQ6ICczMnB4JyB9fT5Db3N0OiB7Zm9ybWF0TW9uZXkocHJpY2UpfTwvZGl2PlxuICAgICAgICA8L1ZlcnRpY2FsPlxuICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRTaXplOiAnMzJweCcsIGxpbmVIZWlnaHQ6ICczMnB4JyB9fT57YW1vdW50fTwvZGl2PlxuICAgICAgPC9Ib3Jpem9udGFsPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5mdW5jdGlvbiBndWFyZChmKSB7XG4gIHJldHVybiAoLi4uYXJncykgPT4ge1xuICAgIHRyeSB7XG4gICAgICBmKC4uLmFyZ3MpO1xuICAgIH0gY2F0Y2ggKGVycikge1xuICAgICAgcmV0dXJuIGFsZXJ0KGVyci5tZXNzYWdlKTtcbiAgICB9XG4gIH07XG59XG5cbmZ1bmN0aW9uIGFsZXJ0KCkge1xuICBpZiAodHlwZW9mIHdpbmRvdyAhPT0gJ3VuZGVmaW5lZCcpIHtcbiAgICB3aW5kb3cuYWxlcnQoLi4uYXJndW1lbnRzKTtcbiAgfVxufVxuXG5mdW5jdGlvbiBmb3JtYXQoeCkge1xuICByZXR1cm4geC50b0ZpeGVkKDIpLnRvTG9jYWxlU3RyaW5nKCk7XG59XG5cbmZ1bmN0aW9uIGZvcm1hdE1vbmV5KHgpIHtcbiAgY29uc3Qgb3B0aW9ucyA9IHsgbWluaW11bUZyYWN0aW9uRGlnaXRzOiAyLCBtYXhpbXVtRnJhY3Rpb25EaWdpdHM6IDIgfTtcbiAgcmV0dXJuIGAkJHt4LnRvTG9jYWxlU3RyaW5nKHVuZGVmaW5lZCwgb3B0aW9ucyl9YDtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/game.js */")), __jsx(AssetWithRate, {
     label: "Cash",
     amount: formatMoney(cash),
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148,
+      lineNumber: 208,
       columnNumber: 7
     }
   }), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 209,
       columnNumber: 7
     }
   }), __jsx(AssetWithRate, {
@@ -358,7 +396,7 @@ function Wallet(_ref4) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 150,
+      lineNumber: 210,
       columnNumber: 7
     }
   })), __jsx("div", {
@@ -369,7 +407,7 @@ function Wallet(_ref4) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152,
+      lineNumber: 212,
       columnNumber: 5
     }
   }));
@@ -382,13 +420,13 @@ function Trading(_ref5) {
       sell = _ref5.sell;
 
   var _useNumericInput = useNumericInput(0),
-      _useNumericInput2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useNumericInput, 3),
+      _useNumericInput2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useNumericInput, 3),
       buyAmount = _useNumericInput2[0],
       buyAmountString = _useNumericInput2[1],
       setBuyAmount = _useNumericInput2[2];
 
   var _useNumericInput3 = useNumericInput(0),
-      _useNumericInput4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useNumericInput3, 3),
+      _useNumericInput4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useNumericInput3, 3),
       sellAmount = _useNumericInput4[0],
       sellAmountString = _useNumericInput4[1],
       setSellAmount = _useNumericInput4[2];
@@ -402,7 +440,7 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160,
+      lineNumber: 220,
       columnNumber: 10
     }
   }, __jsx("div", {
@@ -412,14 +450,14 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161,
+      lineNumber: 221,
       columnNumber: 5
     }
   }, __jsx("b", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161,
+      lineNumber: 221,
       columnNumber: 38
     }
   }, "Trade")), __jsx(AssetWithRate, {
@@ -429,28 +467,28 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163,
+      lineNumber: 223,
       columnNumber: 5
     }
-  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     padding: "0 16px",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165,
+      lineNumber: 225,
       columnNumber: 5
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Input"], {
     placeholder: "Amount",
     value: buyAmountString,
     onChange: setBuyAmount,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166,
+      lineNumber: 226,
       columnNumber: 7
     }
-  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["GameButton"], {
+  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["GameButton"], {
     onClick: function onClick() {
       return guard(buy)(buyAmount);
     },
@@ -458,14 +496,14 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 168,
+      lineNumber: 228,
       columnNumber: 7
     }
   }, "Buy")), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171,
+      lineNumber: 231,
       columnNumber: 5
     }
   }), __jsx(AssetWithRate, {
@@ -475,28 +513,28 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
+      lineNumber: 233,
       columnNumber: 5
     }
-  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  }), __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     padding: "0 16px",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175,
+      lineNumber: 235,
       columnNumber: 5
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Input"], {
     placeholder: "Amount",
     value: sellAmountString,
     onChange: setSellAmount,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 176,
+      lineNumber: 236,
       columnNumber: 7
     }
-  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["GameButton"], {
+  }), "\xA0", __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["GameButton"], {
     onClick: function onClick() {
       return guard(sell)(sellAmount);
     },
@@ -504,18 +542,18 @@ function Trading(_ref5) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178,
+      lineNumber: 238,
       columnNumber: 7
     }
   }, "Sell")));
 }
 
 function useNumericInput(initialValue) {
-  var _useState6 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialValue),
+  var _useState6 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(initialValue),
       value = _useState6[0],
       setValue = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(initialValue),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(initialValue),
       valueString = _useState7[0],
       setValueString = _useState7[1];
 
@@ -541,7 +579,7 @@ function Orderbook() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 198,
+      lineNumber: 258,
       columnNumber: 10
     }
   }, __jsx("div", {
@@ -552,7 +590,7 @@ function Orderbook() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 199,
+      lineNumber: 259,
       columnNumber: 5
     }
   }, "(TODO) Orderbook"));
@@ -563,39 +601,40 @@ function AssetWithRate(_ref6) {
       amount = _ref6.amount,
       rate = _ref6.rate,
       suffix = _ref6.suffix;
-  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  var perSecondRate = rate * (1000 / tickLengthMs);
+  return __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     wide: true,
     spaced: true,
-    padding: "16px",
+    padding: "8px 16px",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205,
+      lineNumber: 266,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 206,
+      lineNumber: 267,
       columnNumber: 7
     }
-  }, label), __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+  }, label), __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Vertical"], {
     right: true,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207,
+      lineNumber: 268,
       columnNumber: 7
     }
   }, __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208,
+      lineNumber: 269,
       columnNumber: 9
     }
-  }, amount, suffix), rate === undefined ? null : __jsx("div", {
+  }, amount, suffix), rate !== undefined ? __jsx("div", {
     style: {
       fontSize: '16px',
       lineHeight: '32px'
@@ -603,10 +642,10 @@ function AssetWithRate(_ref6) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209,
-      columnNumber: 38
+      lineNumber: 271,
+      columnNumber: 11
     }
-  }, rate, " per second")));
+  }, perSecondRate, " per second") : null));
 }
 
 function ItemWithAmount(_ref7) {
@@ -619,32 +658,32 @@ function ItemWithAmount(_ref7) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 217,
+      lineNumber: 280,
       columnNumber: 5
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Horizontal"], {
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Horizontal"], {
     wide: true,
     spaced: true,
-    padding: "16px",
+    padding: "8px 16px",
     middle: true,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218,
+      lineNumber: 281,
       columnNumber: 7
     }
-  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Vertical"], {
+  }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_4__["Vertical"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219,
+      lineNumber: 282,
       columnNumber: 9
     }
   }, __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 220,
+      lineNumber: 283,
       columnNumber: 11
     }
   }, label), __jsx("div", {
@@ -655,7 +694,7 @@ function ItemWithAmount(_ref7) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 221,
+      lineNumber: 284,
       columnNumber: 11
     }
   }, "Cost: ", formatMoney(price))), __jsx("div", {
@@ -666,7 +705,7 @@ function ItemWithAmount(_ref7) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 223,
+      lineNumber: 286,
       columnNumber: 9
     }
   }, amount)));
@@ -695,7 +734,11 @@ function format(x) {
 }
 
 function formatMoney(x) {
-  return "$".concat(x.toFixed(2).toLocaleString());
+  var options = {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  };
+  return "$".concat(x.toLocaleString(undefined, options));
 }
 
 /***/ }),
@@ -723,7 +766,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 function Splash(_ref) {
   var onPlayNow = _ref.onPlayNow;
   return __jsx("div", {
-    className: "jsx-1751646433",
+    className: "jsx-3664469675",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -738,7 +781,7 @@ function Splash(_ref) {
       columnNumber: 7
     }
   }, __jsx("div", {
-    className: "jsx-1751646433" + " " + "container",
+    className: "jsx-3664469675" + " " + "container",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -746,19 +789,33 @@ function Splash(_ref) {
       columnNumber: 9
     }
   }, __jsx("h1", {
-    className: "jsx-1751646433",
+    className: "jsx-3664469675",
     __self: this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8,
       columnNumber: 11
     }
-  }, "DONT SEPPUKU"), __jsx("div", {
-    className: "jsx-1751646433" + " " + "actions",
+  }, "DONT SEPPUKU"), __jsx("h6", {
+    style: {
+      textAlign: 'center'
+    },
+    className: "jsx-3664469675",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 10,
+      columnNumber: 11
+    }
+  }, "(WIP) an incremental idle game with trading"), __jsx("div", {
+    style: {
+      marginTop: '16px'
+    },
+    className: "jsx-3664469675" + " " + "actions",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
       columnNumber: 11
     }
   }, __jsx(_ui__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -766,13 +823,13 @@ function Splash(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 13,
       columnNumber: 13
     }
   }, "Play now")))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "1751646433",
+    id: "3664469675",
     __self: this
-  }, ".container.jsx-1751646433{margin-top:-48px;-webkit-transform:skewY(4deg);-ms-transform:skewY(4deg);transform:skewY(4deg);}h1.jsx-1751646433{font-family:'Nosifer',sans-serif;font-size:64px;-webkit-transform:skewY(-4deg);-ms-transform:skewY(-4deg);transform:skewY(-4deg);}.actions.jsx-1751646433{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFha0IsQUFHMEIsQUFJaUIsQUFLckIsaUJBUlMsZ0JBSVAsZUFDUSwwQkFJQSxxQkFSekIsa0NBS0EsNENBSUEiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFjdGlvbnNcIj5cbiAgICAgICAgICAgIDxCdXR0b24gb25DbGljaz17b25QbGF5Tm93fT5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gU2xhbnRzICh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0wXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMVwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0zXCI+XG4gICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuc2xhbnQtMCB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1ODIyMzM7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTEge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNzEzMDQ1O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0yIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogI2M5NGU0ZTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMyB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNmY2ZiZmE7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8Lz5cbiAgKTtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
+  }, ".container.jsx-3664469675{margin-top:-48px;-webkit-transform:skewY(4deg);-ms-transform:skewY(4deg);transform:skewY(4deg);}h1.jsx-3664469675{font-family:'Nosifer',sans-serif;font-size:64px;-webkit-transform:skewY(-4deg);-ms-transform:skewY(-4deg);transform:skewY(-4deg);margin-bottom:64px;}.actions.jsx-3664469675{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQmtCLEFBRzBCLEFBSWlCLEFBTXJCLGlCQVRTLGdCQUlQLGVBQ1EsMEJBS0EscUJBVHpCLGtDQUtxQixtQkFDckIseUJBSUEiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cblxuICAgICAgICAgIDxoNiBzdHlsZT17eyB0ZXh0QWxpZ246ICdjZW50ZXInIH19PihXSVApIGFuIGluY3JlbWVudGFsIGlkbGUgZ2FtZSB3aXRoIHRyYWRpbmc8L2g2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhY3Rpb25zXCIgc3R5bGU9e3sgbWFyZ2luVG9wOiAnMTZweCcgfX0+XG4gICAgICAgICAgICA8QnV0dG9uIG9uQ2xpY2s9e29uUGxheU5vd30+UGxheSBub3c8L0J1dHRvbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L1NsYW50cz5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIC5jb250YWluZXIge1xuICAgICAgICBtYXJnaW4tdG9wOiAtNDhweDtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSg0ZGVnKTtcbiAgICAgIH1cbiAgICAgIGgxIHtcbiAgICAgICAgZm9udC1mYW1pbHk6ICdOb3NpZmVyJywgc2Fucy1zZXJpZjtcbiAgICAgICAgZm9udC1zaXplOiA2NHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC00ZGVnKTtcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogNjRweDtcbiAgICAgIH1cbiAgICAgIC5hY3Rpb25zIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIFNsYW50cyAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTFcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTJcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtM1wiPlxuICAgICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnNsYW50LTAge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNTgyMjMzO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0xIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogIzcxMzA0NTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMiB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNjOTRlNGU7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTMge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZmNmYmZhO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC8+XG4gICk7XG59XG4iXX0= */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
 }
 
 function Slants(_ref2) {
@@ -782,7 +839,7 @@ function Slants(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 40,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -790,7 +847,7 @@ function Slants(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 41,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -798,7 +855,7 @@ function Slants(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 42,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -806,13 +863,13 @@ function Slants(_ref2) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 43,
       columnNumber: 13
     }
   }, children)))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "971851819",
     __self: this
-  }, ".slant-0.jsx-971851819{height:98.2545%;background:#582233;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-1.jsx-971851819{height:98.2545%;background:#713045;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-2.jsx-971851819{height:98.2545%;background:#c94e4e;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-3.jsx-971851819{height:98.2545%;background:#fcfbfa;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE2Q2tCLEFBR3lCLEFBS0EsQUFLQSxBQUtBLGdCQWRHLEFBS0EsQUFLQSxBQUtBLG1CQWRJLEFBS0EsQUFLQSxBQUtBLGlGQWR6QixBQUtBLEFBS0EsQUFLZSwwRUFDTSw2RkFDSSxtR0FDekIiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFjdGlvbnNcIj5cbiAgICAgICAgICAgIDxCdXR0b24gb25DbGljaz17b25QbGF5Tm93fT5QbGF5IG5vdzwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvU2xhbnRzPlxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLmNvbnRhaW5lciB7XG4gICAgICAgIG1hcmdpbi10b3A6IC00OHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKDRkZWcpO1xuICAgICAgfVxuICAgICAgaDEge1xuICAgICAgICBmb250LWZhbWlseTogJ05vc2lmZXInLCBzYW5zLXNlcmlmO1xuICAgICAgICBmb250LXNpemU6IDY0cHg7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTRkZWcpO1xuICAgICAgfVxuICAgICAgLmFjdGlvbnMge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gU2xhbnRzICh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0wXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMVwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzbGFudC0zXCI+XG4gICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAuc2xhbnQtMCB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1ODIyMzM7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTEge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNzEzMDQ1O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0yIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogI2M5NGU0ZTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMyB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNmY2ZiZmE7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8Lz5cbiAgKTtcbn1cbiJdfQ== */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
+  }, ".slant-0.jsx-971851819{height:98.2545%;background:#582233;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-1.jsx-971851819{height:98.2545%;background:#713045;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-2.jsx-971851819{height:98.2545%;background:#c94e4e;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);}.slant-3.jsx-971851819{height:98.2545%;background:#fcfbfa;-webkit-transform:skewY(-1deg);-ms-transform:skewY(-1deg);transform:skewY(-1deg);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3VzZXIvRG9jdW1lbnRzL0BqYXZhc2NyaXB0L3F1YXJhbnRpbmUtZ2FtZS9jb21wb25lbnRzL3NwbGFzaC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFpRGtCLEFBR3lCLEFBS0EsQUFLQSxBQUtBLGdCQWRHLEFBS0EsQUFLQSxBQUtBLG1CQWRJLEFBS0EsQUFLQSxBQUtBLGlGQWR6QixBQUtBLEFBS0EsQUFLZSwwRUFDTSw2RkFDSSxtR0FDekIiLCJmaWxlIjoiL2hvbWUvdXNlci9Eb2N1bWVudHMvQGphdmFzY3JpcHQvcXVhcmFudGluZS1nYW1lL2NvbXBvbmVudHMvc3BsYXNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi91aSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBTcGxhc2ggKHsgb25QbGF5Tm93IH0pIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPFNsYW50cz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgICAgICA8aDE+RE9OVCBTRVBQVUtVPC9oMT5cblxuICAgICAgICAgIDxoNiBzdHlsZT17eyB0ZXh0QWxpZ246ICdjZW50ZXInIH19PihXSVApIGFuIGluY3JlbWVudGFsIGlkbGUgZ2FtZSB3aXRoIHRyYWRpbmc8L2g2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhY3Rpb25zXCIgc3R5bGU9e3sgbWFyZ2luVG9wOiAnMTZweCcgfX0+XG4gICAgICAgICAgICA8QnV0dG9uIG9uQ2xpY2s9e29uUGxheU5vd30+UGxheSBub3c8L0J1dHRvbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L1NsYW50cz5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIC5jb250YWluZXIge1xuICAgICAgICBtYXJnaW4tdG9wOiAtNDhweDtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSg0ZGVnKTtcbiAgICAgIH1cbiAgICAgIGgxIHtcbiAgICAgICAgZm9udC1mYW1pbHk6ICdOb3NpZmVyJywgc2Fucy1zZXJpZjtcbiAgICAgICAgZm9udC1zaXplOiA2NHB4O1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC00ZGVnKTtcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogNjRweDtcbiAgICAgIH1cbiAgICAgIC5hY3Rpb25zIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59XG5cbmZ1bmN0aW9uIFNsYW50cyAoeyBjaGlsZHJlbiB9KSB7XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtMFwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTFcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNsYW50LTJcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2xhbnQtM1wiPlxuICAgICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnNsYW50LTAge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNTgyMjMzO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgIH1cbiAgICAgIC5zbGFudC0xIHtcbiAgICAgICAgaGVpZ2h0OiA5OC4yNTQ1JTtcbiAgICAgICAgYmFja2dyb3VuZDogIzcxMzA0NTtcbiAgICAgICAgdHJhbnNmb3JtOiBza2V3WSgtMWRlZyk7XG4gICAgICB9XG4gICAgICAuc2xhbnQtMiB7XG4gICAgICAgIGhlaWdodDogOTguMjU0NSU7XG4gICAgICAgIGJhY2tncm91bmQ6ICNjOTRlNGU7XG4gICAgICAgIHRyYW5zZm9ybTogc2tld1koLTFkZWcpO1xuICAgICAgfVxuICAgICAgLnNsYW50LTMge1xuICAgICAgICBoZWlnaHQ6IDk4LjI1NDUlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjZmNmYmZhO1xuICAgICAgICB0cmFuc2Zvcm06IHNrZXdZKC0xZGVnKTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICB9XG4gICAgICBgfTwvc3R5bGU+XG4gICAgPC8+XG4gICk7XG59XG4iXX0= */\n/*@ sourceURL=/home/user/Documents/@javascript/quarantine-game/components/splash.js */"));
 }
 
 /***/ }),
@@ -968,7 +1025,7 @@ function Vertical(_ref5) {
 /*!***************************!*\
   !*** ./config/default.js ***!
   \***************************/
-/*! exports provided: tickLengthMs, initialCash, assets, initialPrices, upgrades, initialCosts, productionRates, getCost */
+/*! exports provided: tickLengthMs, initialCash, assets, initialPrices, upgrades, upgradeSpecs, getCost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -978,13 +1035,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assets", function() { return assets; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialPrices", function() { return initialPrices; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "upgrades", function() { return upgrades; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialCosts", function() { return initialCosts; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "productionRates", function() { return productionRates; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "upgradeSpecs", function() { return upgradeSpecs; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCost", function() { return getCost; });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
+
+var _upgradeSpecs;
+
 var tickLengthMs = 100;
-var initialCash = 10;
+var initialCash = 15;
 var assets = {
   masks: 'masks'
 };
@@ -993,10 +1052,38 @@ var initialPrices = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IM
   ask: 1.01
 });
 var upgrades = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, assets.masks, {
-  employees: 'masks-employees'
+  employees: 'masks-employees',
+  sewing: 'masks-sewing-machines',
+  conveyor: 'masks-conveyor',
+  printer: 'masks-printer',
+  factory: 'masks-factory',
+  fullAutomation: 'masks-full-automation'
 });
-var initialCosts = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, upgrades[assets.masks].employees, 10);
-var productionRates = Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, upgrades[assets.masks].employees, 0.05);
+var upgradeSpecs = (_upgradeSpecs = {}, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].employees, {
+  label: 'Employees',
+  initialCost: 10,
+  productionRate: 0.05
+}), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].sewing, {
+  label: 'Sewing machines',
+  initialCost: 250,
+  productionRate: 1
+}), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].conveyor, {
+  label: 'Conveyor belt',
+  initialCost: 1800,
+  productionRate: 10
+}), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].printer, {
+  label: '3D printers',
+  initialCost: 9001,
+  productionRate: 109
+}), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].factory, {
+  label: 'Factory',
+  initialCost: 220000,
+  productionRate: 1200
+}), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_upgradeSpecs, upgrades[assets.masks].fullAutomation, {
+  label: 'Full automation',
+  initialCost: 12500000,
+  productionRate: 49999
+}), _upgradeSpecs);
 function getCost(initialCost, amount) {
   var multiplier = 1 + 0.1 * Math.pow(amount, 3);
   return Math.floor(initialCost * multiplier);
