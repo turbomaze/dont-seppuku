@@ -3,21 +3,29 @@ import { GameButton, Input, Horizontal, Vertical } from './ui';
 import * as config  from '../config/default';
 
 const {
-  getPrice,
+  assets,
+  getCost,
+  initialCosts,
   initialPrices,
   productionRates,
   tickLengthMs,
+  upgrades,
 } = config;
 
 export function Game () {
   // state
   const [cash, setCash] = useState(config.initialCash);
-  const [masks, setMasks] = useState(0);
-  const [employees, setEmployees] = useState(0);
+  const [employees, buyEmployee] = useBuyable(
+    initialCosts[upgrades[assets.masks].employees],
+    cash,
+    setCash
+  );
+  const [maskPrice, setMaskBidAsk] = useBidAsk(initialPrices[assets.masks]);
+  const [masks, setMasks, buyMasks, sellMasks] = useTradable(0, maskPrice, cash, setCash);
 
   // computed values
-  const employeeCost = getPrice(initialPrices.masks, employees);
-  const maskRate = productionRates.employees * employees;
+  const employeeCost = getCost(initialCosts[upgrades[assets.masks].employees], employees);
+  const maskRate = productionRates[upgrades[assets.masks].employees] * employees;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,55 +40,87 @@ export function Game () {
 
       <Vertical flex={5}>
         <Horizontal flex={1}>
-          <div style={{ boxSizing: 'border-box', background: '#acabaa', flex: 1 }}>
-            <div style={{ padding: '16px' }}><b>Trade</b></div>
+          <Trading bid={maskPrice.bid} ask={maskPrice.ask} buy={buyMasks} sell={sellMasks} />
 
-            <AssetWithRate label='Buy masks @' amount={formatMoney(100.2)} suffix='/mask' />
-
-            <Horizontal padding='0 16px'>
-              <Input placeholder='Amount'/>
-              &nbsp;
-              <GameButton flex={1}>Buy</GameButton>
-            </Horizontal>
-
-            <br />
-
-            <AssetWithRate label='Sell masks @' amount={formatMoney(99.2)} suffix='/mask' />
-
-            <Horizontal padding='0 16px'>
-              <Input placeholder='Amount'/>
-              &nbsp;
-              <GameButton flex={1}>Sell</GameButton>
-            </Horizontal>
-          </div>
-
-          <div style={{ boxSizing: 'border-box', background: '#121212', flex: 1 }}>
-            <div style={{color:'white', padding: '16px'}}>(TODO) Orderbook</div>
-          </div>
+          <Orderbook />
         </Horizontal>
 
         <Horizontal flex={2}>
           <div style={{ background: '#dcdbda', flex: 1 }}>
-            <div style={{ padding: '16px' }}><b>Mask upgrades</b></div>
+            <div style={{ padding: '16px' }}><b>Mask production</b></div>
 
             <ItemWithAmount
-              onClick={() => setEmployees(employees + 1)}
+              onClick={guard(buyEmployee)}
               label='Employees'
               amount={employees}
               price={employeeCost} />
           </div>
 
           <div style={{ background: '#cccbca', flex: 1 }}>
-            <div style={{ padding: '16px' }}><b>TODO upgrades</b></div>
+            <div style={{ padding: '16px' }}><b>TODO production</b></div>
           </div>
 
           <div style={{ background: '#bcbbba', flex: 1 }}>
-            <div style={{ padding: '16px' }}><b>TODO upgrades</b></div>
+            <div style={{ padding: '16px' }}><b>TODO production</b></div>
           </div>
         </Horizontal>
       </Vertical>
     </Horizontal>
   );
+}
+
+function useBuyable(initialCost, cash, setCash) {
+  const [quantity, setQuantity] = useState(0);
+
+  function buy() {
+    const cost = getCost(initialCost, quantity);
+    if (cost > cash) {
+      throw new Error('Insufficient cash balance');
+    }
+
+    setCash(cash - cost);
+    setQuantity(quantity + 1);
+  }
+
+  return [quantity, buy];
+}
+
+function useBidAsk({ bid: initialBid, ask: initialAsk }) {
+  const [bid, setBid] = useState(initialBid);
+  const [ask, setAsk] = useState(initialAsk);
+
+  function setBidAsk({ bid: newBid, ask: newAsk }) {
+    setBid(newBid);
+    setAsk(newAsk);
+  }
+
+  return [{ bid, ask }, setBidAsk];
+}
+
+function useTradable(initialAmount, { bid, ask }, cash, setCash) {
+  const [amount, setAmount] = useState(initialAmount);
+
+  function buy(quantity) {
+    const cost = ask * quantity;
+    if (cost > cash) {
+      throw new Error('Insufficient cash balance');
+    }
+
+    setCash(cash - cost);
+    setAmount(amount + quantity);
+  }
+
+  function sell(quantity) {
+    if (quantity > amount) {
+      throw new Error('Insufficient asset quantity');
+    }
+
+    const quoteQuantity = bid * quantity;
+    setAmount(amount - quantity);
+    setCash(cash + quoteQuantity);
+  }
+
+  return [amount, setAmount, buy, sell];
 }
 
 function Wallet({ cash, masks, maskRate }) {
@@ -94,10 +134,57 @@ function Wallet({ cash, masks, maskRate }) {
     }}>
       <AssetWithRate label='Cash' amount={formatMoney(cash)} />
       <br />
-      <AssetWithRate label='Masks' amount={format(masks)} rate={maskRate} />
+      <AssetWithRate label='Masks' amount={format(masks)} rate={format(maskRate)} />
     </div>
     <div style={{ background: '#ecebea', flex: 2 }}></div>
   </Vertical>;
+}
+
+function Trading({ bid, ask, buy, sell }) {
+  const [buyAmount, buyAmountString, setBuyAmount] = useNumericInput(0);
+  const [sellAmount, sellAmountString, setSellAmount] = useNumericInput(0);
+
+  return <div style={{ boxSizing: 'border-box', background: '#acabaa', flex: 1 }}>
+    <div style={{ padding: '16px' }}><b>Trade</b></div>
+
+    <AssetWithRate label='Buy masks @' amount={formatMoney(ask)} suffix='/mask' />
+
+    <Horizontal padding='0 16px'>
+      <Input placeholder='Amount' value={buyAmountString} onChange={setBuyAmount} />
+      &nbsp;
+      <GameButton onClick={() => guard(buy)(buyAmount)} flex={1}>Buy</GameButton>
+    </Horizontal>
+
+    <br />
+
+    <AssetWithRate label='Sell masks @' amount={formatMoney(bid)} suffix='/mask' />
+
+    <Horizontal padding='0 16px'>
+      <Input placeholder='Amount' value={sellAmountString} onChange={setSellAmount} />
+      &nbsp;
+      <GameButton onClick={() => guard(sell)(sellAmount)} flex={1}>Sell</GameButton>
+    </Horizontal>
+  </div>;
+}
+
+function useNumericInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
+  const [valueString, setValueString] = useState(initialValue);
+  function set(event) {
+    if (isNaN(event.target.value)) {
+      return;
+    }
+
+    setValue(parseFloat(event.target.value));
+    setValueString(event.target.value);
+  }
+  return [value, valueString, set];
+}
+
+function Orderbook() {
+  return <div style={{ boxSizing: 'border-box', background: '#121212', flex: 1 }}>
+    <div style={{color:'white', padding: '16px'}}>(TODO) Orderbook</div>
+  </div>;
 }
 
 function AssetWithRate({ label, amount, rate, suffix }) {
@@ -106,7 +193,7 @@ function AssetWithRate({ label, amount, rate, suffix }) {
       <div>{label}</div>
       <Vertical right>
         <div>{amount}{suffix}</div>
-        {rate === undefined ? null : <div style={{ fontSize: '16px', lineHeight: '32px' }}>{format(rate)} per second</div>}
+        {rate === undefined ? null : <div style={{ fontSize: '16px', lineHeight: '32px' }}>{rate} per second</div>}
       </Vertical>
     </Horizontal>
   );
@@ -124,6 +211,22 @@ function ItemWithAmount({ onClick, label, amount, price }) {
       </Horizontal>
     </div>
   );
+}
+
+function guard(f) {
+  return (...args) => {
+    try {
+      f(...args);
+    } catch (err) {
+      return alert(err.message);
+    }
+  };
+}
+
+function alert() {
+  if (typeof window !== 'undefined') {
+    window.alert(...arguments);
+  }
 }
 
 function format(x) {

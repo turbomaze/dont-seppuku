@@ -59,9 +59,9 @@ export function GameButton ({ onClick, flex, children }) {
   );
 }
 
-export function Input ({ placeholder }) {
+export function Input ({ placeholder, value, onChange }) {
   return (
-    <input style={{
+    <input onChange={onChange} value={value} style={{
       border: 'none',
       borderRadius: '2px',
       boxSizing: 'border-box',
