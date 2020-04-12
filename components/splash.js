@@ -6,7 +6,10 @@ export function Splash ({ onPlayNow }) {
       <Slants>
         <div className="container">
           <h1>DONT SEPPUKU</h1>
-          <div className="actions">
+
+          <h6 style={{ textAlign: 'center' }}>(WIP) an incremental idle game with trading</h6>
+
+          <div className="actions" style={{ marginTop: '16px' }}>
             <Button onClick={onPlayNow}>Play now</Button>
           </div>
         </div>
@@ -20,6 +23,7 @@ export function Splash ({ onPlayNow }) {
         font-family: 'Nosifer', sans-serif;
         font-size: 64px;
         transform: skewY(-4deg);
+        margin-bottom: 64px;
       }
       .actions {
         display: flex;

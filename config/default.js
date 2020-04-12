@@ -1,6 +1,6 @@
 export const tickLengthMs = 100;
 
-export const initialCash = 10;
+export const initialCash = 15;
 
 export const assets = {
   masks: 'masks',
@@ -16,15 +16,21 @@ export const initialPrices = {
 export const upgrades = {
   [assets.masks]: {
     employees: 'masks-employees',
+    sewing: 'masks-sewing-machines',
   },
 };
 
-export const initialCosts = {
-  [upgrades[assets.masks].employees]: 10,
-};
-
-export const productionRates = {
-  [upgrades[assets.masks].employees]: 0.05
+export const upgradeSpecs = {
+  [upgrades[assets.masks].employees]: {
+    label: 'Employees',
+    initialCost: 10,
+    productionRate: 0.05,
+  },
+  [upgrades[assets.masks].sewing]: {
+    label: 'Sewing machines',
+    initialCost: 250,
+    productionRate: 1,
+  },
 };
 
 export function getCost(initialCost, amount) {

@@ -5,27 +5,35 @@ import * as config  from '../config/default';
 const {
   assets,
   getCost,
-  initialCosts,
   initialPrices,
-  productionRates,
   tickLengthMs,
   upgrades,
+  upgradeSpecs,
 } = config;
 
 export function Game () {
   // state
   const [cash, setCash] = useState(config.initialCash);
-  const [employees, buyEmployee] = useBuyable(
-    initialCosts[upgrades[assets.masks].employees],
-    cash,
-    setCash
-  );
   const [maskPrice, setMaskBidAsk] = useBidAsk(initialPrices[assets.masks]);
   const [masks, setMasks, buyMasks, sellMasks] = useTradable(0, maskPrice, cash, setCash);
+  const buyables = {
+    [upgrades[assets.masks].employees]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].employees].initialCost,
+      cash,
+      setCash
+    ),
+    [upgrades[assets.masks].sewing]: useBuyable(
+      upgradeSpecs[upgrades[assets.masks].sewing].initialCost,
+      cash,
+      setCash
+    ),
+  };
 
-  // computed values
-  const employeeCost = getCost(initialCosts[upgrades[assets.masks].employees], employees);
-  const maskRate = productionRates[upgrades[assets.masks].employees] * employees;
+  // computed
+  const maskRate = Object.values(upgrades[assets.masks]).reduce((total, key) => {
+    const amount = buyables[key][0];
+    return total + amount * upgradeSpecs[key].productionRate;
+  }, 0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,8 +43,9 @@ export function Game () {
       // randomly modify the prices
       if (Math.random() < 0.5) {
         const halfSpread = 0.01;
+        const volatility = 0.02;
         const midPrice = (maskPrice.bid + maskPrice.ask) / 2;
-        const multiplier = (1 - halfSpread) + 2 * halfSpread * Math.random(); // martingale
+        const multiplier = (1 - volatility) + 2 * volatility * Math.random(); // martingale
         const newMidPrice = multiplier * midPrice;
         setMaskBidAsk({
           bid: newMidPrice * (1 - halfSpread),
@@ -62,11 +71,12 @@ export function Game () {
           <div style={{ background: '#dcdbda', flex: 1 }}>
             <div style={{ padding: '16px' }}><b>Mask production</b></div>
 
-            <ItemWithAmount
-              onClick={guard(buyEmployee)}
-              label='Employees'
-              amount={employees}
-              price={employeeCost} />
+            {
+              [
+                upgrades[assets.masks].employees,
+                upgrades[assets.masks].sewing
+              ].map(makeBuyable(buyables))
+            }
           </div>
 
           <div style={{ background: '#cccbca', flex: 1 }}>
@@ -80,6 +90,19 @@ export function Game () {
       </Vertical>
     </Horizontal>
   );
+}
+
+function makeBuyable(items) {
+  return function BuyableItem(key) {
+    const [currentAmount, buyFunction] = items[key];
+    const { label, initialCost } = upgradeSpecs[key];
+    const cost = getCost(initialCost, currentAmount);
+    return <ItemWithAmount
+      onClick={guard(buyFunction)}
+      label={label}
+      amount={currentAmount}
+      price={cost} />;
+  };
 }
 
 function useBuyable(initialCost, cash, setCash) {
@@ -145,6 +168,19 @@ function Wallet({ cash, masks, maskRate }) {
       flexDirection: 'column',
       boxSizing: 'border-box',
     }}>
+      <div>
+        <h1>DONT SEPPUKU</h1>
+        <style jsx>{`
+        h1 {
+          border: 8px solid;
+          font-family: 'Nosifer', sans-serif;
+          font-size: 24px;
+          margin: 16px 8px;
+          padding: 12px 8px 8px;
+          text-align: center;
+        }
+        `}</style>
+      </div>
       <AssetWithRate label='Cash' amount={formatMoney(cash)} />
       <br />
       <AssetWithRate label='Masks' amount={format(masks)} rate={format(maskRate)} />
@@ -201,12 +237,15 @@ function Orderbook() {
 }
 
 function AssetWithRate({ label, amount, rate, suffix }) {
+  const perSecondRate = rate / (1000 / tickLengthMs);
   return (
-    <Horizontal wide spaced padding='16px'>
+    <Horizontal wide spaced padding='8px 16px'>
       <div>{label}</div>
       <Vertical right>
         <div>{amount}{suffix}</div>
-        {rate === undefined ? null : <div style={{ fontSize: '16px', lineHeight: '32px' }}>{rate} per second</div>}
+        {rate !== undefined ? (
+          <div style={{ fontSize: '16px', lineHeight: '32px' }}>{perSecondRate} per second</div>
+        ) : null}
       </Vertical>
     </Horizontal>
   );
